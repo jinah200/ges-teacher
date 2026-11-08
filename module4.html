@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모듈 4 · 안내 페이지</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="mod-head">
+    <span class="pill">MODULE 4 · 안내</span>
+    <span class="pill gray">약 15분</span>
+  </div>
+  <h1>Canvas로 안내 페이지 만들기</h1>
+  <p class="lead">단원·활동 안내를 Gemini <b>Canvas</b>로 만든 모바일 웹페이지로 공유합니다. 가정통신문·단원 안내·동의 체크를 한 화면에 담아, 단톡방에 링크 하나로 전달합니다.</p>
+  <div class="map">
+    <b>역량</b> — 디지털 도구 활용 시범·공유(ISTE Leader 2.2.c) &nbsp;|&nbsp; <b>배지</b> — (연계) Engagement
+  </div>
+
+  <h2>무엇을 안내하나요?</h2>
+  <div class="card">
+    <p data-level="elem"><span class="lane-tag elem">초등</span> 가정통신문형 — 단원 안내 + 준비물 + 가정 협조 + 동의 체크.</p>
+    <p data-level="mid"><span class="lane-tag mid">중등</span> 단원·평가 안내 — 성취기준 + 수행평가 일정 + 준비 안내.</p>
+    <p data-level="high"><span class="lane-tag high">고등</span> 프로젝트·진로 안내 — 탐구 일정 + 산출물 + 제출 방법.</p>
+  </div>
+
+  <h2>실습 · Canvas 안내 페이지 프롬프트</h2>
+  <p class="lead">Gemini 채팅에서 우측에 <b>Canvas</b> 창을 열고 아래를 붙여넣으세요.</p>
+  <div class="prompt">
+    <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
+    <pre data-level="elem">우측에 Canvas(작업대)를 새로 열어, 학부모·학생이 단톡방 링크로 보는 '단원 안내 가정통신문 모바일 웹페이지 UI'를 만들어 줘.
+
+[내용 구성]
+1. 전체 레이아웃: 스마트폰 세로 화면(모바일 뷰포트).
+2. 상단 배너: 따뜻한 인사말과 '[[단원/행사명]]' 안내.
+3. 개요 박스: [[기간]], [[준비물]], [[학습 목표]]를 이모지와 함께 요약.
+4. 가정 협조 안내: [[협조 사항]] 2~3가지를 짧게.
+5. 동의 체크 컴포넌트: 아래 항목을 터치해 체크하면 하단 버튼이 활성화되게.
+   - [ ] 활동 참여 및 사진 촬영에 동의합니다.
+   - [ ] 안전 수칙 안내를 확인했습니다.
+6. 하단 CTA 버튼: '확인했어요' + 그 아래 '문의: [[담임/연락]]'.
+
+[디자인] 밝고 깨끗한 카드형. 본문은 흰색 420px 중앙 정렬(데스크톱에서도 휴대폰처럼). 포인트 색 인디고 #1a73e8, 완료 체크는 민트 #1e8e3e, 둥근 모서리, 부드러운 그림자, 큰 글씨.</pre>
+    <pre data-level="mid">우측에 Canvas를 새로 열어, 학생·학부모가 보는 '[[단원명]] 수업·평가 안내 모바일 웹페이지 UI'를 만들어 줘.
+
+[내용 구성]
+1. 모바일 세로 레이아웃.
+2. 상단 배너: 단원명과 한 줄 소개.
+3. 성취기준 박스: [[성취기준]]을 학생 눈높이로 풀어 1~2줄.
+4. 평가 안내 카드: [[수행평가명]], [[일정]], [[평가 방법]], 준비물.
+5. 체크 컴포넌트: '[ ] 평가 일정과 준비물을 확인했습니다.'
+6. 하단 CTA: '확인 완료' + 문의 연락처.
+
+[디자인] 깔끔한 카드형, 420px 중앙 정렬, 포인트색 인디고 #1a73e8·완료 민트 #1e8e3e, 둥근 모서리, 큰 글씨.</pre>
+    <pre data-level="high">우측에 Canvas를 새로 열어, 학생이 보는 '[[프로젝트/탐구명]] 안내 모바일 웹페이지 UI'를 만들어 줘.
+
+[내용 구성]
+1. 모바일 세로 레이아웃.
+2. 상단 배너: 프로젝트명과 목표 한 줄.
+3. 일정 타임라인: [[주요 단계와 마감일]]을 단계별로.
+4. 산출물·제출 안내 카드: [[산출물 형식]], [[제출 방법/링크]].
+5. 체크 컴포넌트: '[ ] 일정과 제출 방법을 확인했습니다.'
+6. 하단 CTA: '시작하기' + 문의 연락처.
+
+[디자인] 차분하고 세련된 카드형, 420px 중앙 정렬, 포인트색 인디고 #1a73e8·완료 민트 #1e8e3e, 둥근 모서리.</pre>
+  </div>
+  <div class="tip"><b>TIP</b> 완성되면 Canvas의 <b>공유</b>로 링크를 받아 단톡방에 올리세요. 내용을 바꾸고 싶으면 "일정표를 표로 바꿔줘", "색을 더 차분하게" 처럼 대화로 수정하면 됩니다.</div>
+
+  <div class="finish">
+    <h2>🏅 배지 퀴즈</h2>
+    <div class="quiz" data-badge="m4-canvas" data-badge-label="Canvas 안내">
+      <div class="quiz-q" data-answer="1">
+        <p><b>Q1.</b> Canvas로 만든 안내 페이지의 장점은?</p>
+        <button class="opt">종이로만 배부할 수 있다</button>
+        <button class="opt">링크 하나로 모바일에서 바로 확인·동의할 수 있다</button>
+        <button class="opt">수정이 불가능하다</button>
+      </div>
+      <div class="quiz-q" data-answer="0">
+        <p><b>Q2.</b> 만든 페이지를 고치고 싶을 때는?</p>
+        <button class="opt">대화로 "이렇게 바꿔줘"라고 요청한다</button>
+        <button class="opt">처음부터 다시 만든다</button>
+        <button class="opt">고칠 수 없다</button>
+      </div>
+      <p class="quiz-result" style="display:none;font-weight:700;margin-top:10px;"></p>
+    </div>
+    <div class="badge-get"><div class="ico">✉️</div><div><b>디지털 도구 공유</b> 역량 — 안내·소통을 모바일 페이지로.</div></div>
+  </div>
+  <div class="foot">AI로 만드는 우리 수업 · 모듈 4</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

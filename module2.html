@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모듈 2 · 학생 진단 폼</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="mod-head">
+    <span class="pill">MODULE 2 · 진단</span>
+    <span class="pill gray">약 15분</span>
+  </div>
+  <h1>학생 진단 폼 설계하기</h1>
+  <p class="lead">수업 설계의 출발은 '우리 학생이 지금 어디에 있는가'입니다. AI와 대화하며 빠진 항목 없는 진단·수요조사 구글 폼을 설계합니다. 여기서 모은 데이터는 모듈 5(대시보드)로 이어집니다.</p>
+  <div class="map">
+    <b>역량</b> — 교수·학습 방법 및 평가 설계 &nbsp;|&nbsp; <b>배지</b> — (연계) Engagement
+  </div>
+
+  <h2>무엇을 진단하나요?</h2>
+  <div class="card">
+    <p data-level="elem"><span class="lane-tag elem">초등</span> 흥미·생활·학습 성향 진단 (좋아하는 활동, 어려워하는 과목, 모둠 선호 등).</p>
+    <p data-level="mid"><span class="lane-tag mid">중등</span> 교과 사전지식 진단 (단원 관련 선개념, 오개념, 자기평가).</p>
+    <p data-level="high"><span class="lane-tag high">고등</span> 진로·탐구주제 수요조사 (관심 주제, 탐구 경험, 희망 활동).</p>
+  </div>
+
+  <h2>실습 ① · 대화형으로 폼 설계하기</h2>
+  <p class="lead">Gemini에 아래를 붙여넣으면, AI가 <b>한 번에 하나씩</b> 질문하며 빠진 항목 없이 폼을 함께 설계해 줍니다.</p>
+  <div class="prompt">
+    <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
+    <pre data-level="elem">너는 초등 담임 교사의 학급 운영을 돕는 베테랑 교사야.
+내가 우리 반 학생들의 '흥미·학습 성향'을 알아보는 진단 구글 폼을 만들려고 해.
+빠진 항목 없이 설계할 수 있도록, 필요한 것을 한 번에 하나씩 질문해 줘.
+질문마다 내가 답하기 쉽도록 현실적인 예시 3개를 짧게 곁들여 줘.
+대화가 끝나면 구글 폼에 그대로 옮길 수 있는 문항 목록으로 정리해 줘.</pre>
+    <pre data-level="mid">너는 중등 교과 교사의 수업 설계를 돕는 베테랑 교사야.
+내가 '[[단원명]]' 수업 전에 학생들의 사전지식·오개념을 알아보는 진단 구글 폼을 만들려고 해.
+빠진 항목 없이 설계할 수 있도록, 필요한 것을 한 번에 하나씩 질문해 줘.
+질문마다 답하기 쉬운 현실적인 예시 3개를 짧게 곁들여 줘.
+대화가 끝나면 구글 폼에 그대로 옮길 수 있는 문항 목록으로 정리해 줘.</pre>
+    <pre data-level="high">너는 고교 교사의 탐구·진로 지도를 돕는 베테랑 교사야.
+내가 학생들의 '관심 탐구 주제와 진로 수요'를 알아보는 조사 구글 폼을 만들려고 해.
+빠진 항목 없이 설계할 수 있도록, 필요한 것을 한 번에 하나씩 질문해 줘.
+질문마다 답하기 쉬운 현실적인 예시 3개를 짧게 곁들여 줘.
+대화가 끝나면 구글 폼에 그대로 옮길 수 있는 문항 목록으로 정리해 줘.</pre>
+  </div>
+
+  <h2>실습 ② · 폼 사양 한 번에 받기</h2>
+  <p class="lead">대화가 번거롭다면, 아래로 '구글 폼 양식 작성 도우미'에 바로 붙여넣을 사양을 한 번에 받을 수 있습니다.</p>
+  <div class="prompt">
+    <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
+    <pre>너는 학생 진단 설문 설계 전문가야. 아래 조건으로 구글 폼 문항을 설계해, 구글 폼 [양식 작성 도우미]에 그대로 붙여넣을 수 있게 출력해 줘. 인사말·설명 없이 사양만 코드블록 하나로.
+
+[대상/목적] [[예: 중2 '삼국의 성립' 단원 사전지식 진단]]
+[필수 포함] 이름, 학년/반, 번호
+[진단 문항] 선개념 확인 3~4문항, 자기평가(이해도) 1문항, 어려운 점 서술 1문항
+
+출력 형식(한 줄씩):
+번호. 질문 | 유형 | 선택지1 / 선택지2 / 선택지3 | 필수
+- 유형은 단답형·장문형·객관식·체크박스·그리드 중 하나
+- 단답형·장문형은 선택지 칸을 비울 것
+- 민감정보(건강·가정형편 등)는 수집하지 말 것</pre>
+  </div>
+  <div class="tip"><b>TIP</b> 구글 폼 → 우측 상단 <b>[양식 작성 도우미(AI)]</b>에 위 출력을 붙여넣으면 설문이 자동으로 만들어집니다. 응답 시트는 모듈 5 대시보드의 재료가 됩니다.</div>
+  <div class="note"><b>개인정보 유의</b> 지병·가정형편 등 민감정보는 설문으로 모으지 않습니다. 꼭 필요하면 "담임에게 개별로 알려 주세요" 안내 문구로 대체하세요.</div>
+
+  <div class="finish">
+    <h2>🏅 배지 퀴즈</h2>
+    <div class="quiz" data-badge="m2-engagement" data-badge-label="Engagement">
+      <div class="quiz-q" data-answer="1">
+        <p><b>Q1.</b> 대화형 설계 프롬프트의 장점은?</p>
+        <button class="opt">한 번에 모든 걸 다 물어 빠르다</button>
+        <button class="opt">한 번에 하나씩 물어 빠진 항목 없이 설계된다</button>
+        <button class="opt">교사가 아무것도 안 해도 된다</button>
+      </div>
+      <div class="quiz-q" data-answer="2">
+        <p><b>Q2.</b> 진단 폼에서 모으면 안 되는 것은?</p>
+        <button class="opt">이름·학년</button>
+        <button class="opt">이해도 자기평가</button>
+        <button class="opt">지병 등 민감정보</button>
+      </div>
+      <p class="quiz-result" style="display:none;font-weight:700;margin-top:10px;"></p>
+    </div>
+    <div class="badge-get"><div class="ico">📋</div><div><b>Engagement</b> 역량 — 데이터로 학생을 파악하는 진단 설계.</div></div>
+  </div>
+  <div class="foot">AI로 만드는 우리 수업 · 모듈 2</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

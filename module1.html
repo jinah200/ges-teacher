@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모듈 1 · 수업 마스코트</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="mod-head">
+    <span class="pill">MODULE 1 · 몰입</span>
+    <span class="pill gray">약 15분</span>
+  </div>
+  <h1>수업 마스코트 만들기</h1>
+  <p class="lead">첫 단추는 '우리 수업의 얼굴'입니다. Gemini 이미지로 학급·수업 마스코트를 만들어, 오늘 만들 모든 자료(진단 폼·가정통신문·엽서)에 일관된 캐릭터로 넣습니다.</p>
+  <div class="map">
+    <b>역량</b> — AI·디지털 기술의 윤리적 활용(생성 이미지의 초상·저작권 유의) &nbsp;|&nbsp; <b>배지</b> — Intro to Gemini
+  </div>
+
+  <h2>오늘 만들 마스코트</h2>
+  <div class="card">
+    <p data-level="elem"><span class="lane-tag elem">초등</span> 우리 반 마스코트 — 친근한 동물 캐릭터로. 학급 안내·칭찬판·가정통신문에 두루 씁니다.</p>
+    <p data-level="mid"><span class="lane-tag mid">중등</span> 교과 캐릭터 — 내 과목을 상징하는 마스코트로. 수업 슬라이드·형성평가에 씁니다.</p>
+    <p data-level="high"><span class="lane-tag high">고등</span> 프로젝트·동아리 엠블럼 — 탐구 프로젝트나 동아리의 상징으로.</p>
+  </div>
+
+  <h2>실습 · 이미지 프롬프트</h2>
+  <p class="lead">Gemini(이미지 생성)에 아래를 붙여넣으세요. 대괄호 <b>[ ]</b> 안은 본인 상황에 맞게 바꿉니다.</p>
+  <div class="prompt">
+    <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
+    <pre data-level="elem">사진 첨부 없이, 아래 설명만으로 '우리 반 마스코트' 이미지를 하나 그려 주세요.
+
+[마스코트] [[강아지]]를 귀엽게 의인화한 2족 보행 캐릭터. 사람 얼굴을 섞지 말고, 그 동물의 특징을 또렷하게 살려 한눈에 어떤 동물인지 알아볼 수 있게. 표정은 밝고 친근하게.
+[스타일] 손바닥에 올릴 만한 작은 굿즈 피규어. 3~4등신의 아기 같은 체형, 머리는 크고 팔다리는 짧고 통통하게. 매끈하고 광택 있는 플라스틱 질감.
+[설정] 작은 칠판과 분필, 목에 건 이름표를 들고 있음. 가슴에 '[[5-3]]' 학급 표시.
+[배경] 밝고 깨끗한 교실. 단색에 가까운 부드러운 배경.
+[마무리] 글자는 '[[5-3]]'만 또렷하게, 그 외 간판·표지는 글자 없이 비워 둘 것. 정확히 한 장만 생성.</pre>
+    <pre data-level="mid">사진 첨부 없이, 아래 설명만으로 '교과 마스코트' 이미지를 하나 그려 주세요.
+
+[마스코트] [[내 과목을 상징하는 사물/동물]]을 귀엽게 의인화한 2족 보행 캐릭터. 한눈에 무엇인지 알아볼 수 있게 특징을 또렷하게.
+[스타일] 손바닥 크기의 굿즈 피규어. 3~4등신, 머리는 크고 팔다리는 짧고 통통하게. 매끈한 플라스틱 질감.
+[설정] 내 과목과 관련된 작은 소품(예: 비커·지구본·악보 등)을 들고 있음.
+[배경] 밝고 깔끔한 수업 공간. 부드러운 단색 배경.
+[마무리] 화면의 간판·표지는 글자 없이 비워 둘 것. 정확히 한 장만 생성.</pre>
+    <pre data-level="high">사진 첨부 없이, 아래 설명만으로 '프로젝트 엠블럼 캐릭터' 이미지를 하나 그려 주세요.
+
+[마스코트] [[프로젝트/동아리 주제]]를 상징하는 캐릭터. 세련되고 단정하게, 약간의 귀여움을 더해.
+[스타일] 손바닥 크기의 굿즈 피규어. 3~4등신, 매끈한 플라스틱 질감.
+[설정] 주제를 드러내는 소품 하나와, 가슴에 '[[프로젝트 약칭]]' 표시.
+[배경] 차분한 단색 배경.
+[마무리] '[[프로젝트 약칭]]' 외의 글자·표지는 비워 둘 것. 정확히 한 장만 생성.</pre>
+  </div>
+  <div class="tip"><b>사진으로 만들고 싶다면</b> 본인 사진을 첨부하고 맨 앞에 "첨부한 사진 속 인물을 마스코트로 만들어 주세요. 얼굴의 이목구비 배치·눈·코·입 비율과 헤어스타일은 사진 그대로 유지하고, 없는 안경·주름은 그리지 마세요."를 덧붙이면 닮은 캐릭터가 나옵니다.</div>
+  <div class="note"><b>윤리 체크</b> 학생·타인의 사진으로 생성할 때는 본인(보호자) 동의를 받으세요. 생성 이미지는 교육 목적으로 쓰되, 실제 인물로 오인될 표현은 피합니다.</div>
+
+  <div class="finish">
+    <h2>🏅 배지 퀴즈</h2>
+    <div class="quiz" data-badge="m1-gemini" data-badge-label="Intro to Gemini">
+      <div class="quiz-q" data-answer="2">
+        <p><b>Q1.</b> 이미지 프롬프트에서 대괄호 [ ]는 무엇을 뜻하나요?</p>
+        <button class="opt">그대로 두어야 하는 고정 문구</button>
+        <button class="opt">삭제해야 할 부분</button>
+        <button class="opt">내 상황에 맞게 바꾸는 자리</button>
+      </div>
+      <div class="quiz-q" data-answer="0">
+        <p><b>Q2.</b> 타인의 사진으로 마스코트를 만들 때 먼저 할 일은?</p>
+        <button class="opt">본인(보호자) 동의 받기</button>
+        <button class="opt">바로 생성해 배포</button>
+        <button class="opt">얼굴을 크게 왜곡</button>
+      </div>
+      <p class="quiz-result" style="display:none;font-weight:700;margin-top:10px;"></p>
+    </div>
+    <div class="badge-get"><div class="ico">🎨</div><div><b>Intro to Gemini</b> 역량 — 생성형 AI로 교육용 이미지 만들기.</div></div>
+  </div>
+  <div class="foot">AI로 만드는 우리 수업 · 모듈 1</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+/* 교사 연수 웹교안 — 공유 스타일 (Google for Education 톤) */
+:root{
+  --blue:#1a73e8; --blue-d:#1967d2; --blue-l:#e8f0fe;
+  --green:#1e8e3e; --green-l:#e6f4ea;
+  --yellow:#f9ab00; --yellow-l:#fef7e0;
+  --red:#d93025; --purple:#9334e6;
+  --navy:#202124; --gray:#5f6368; --line:#dadce0; --line-l:#e8eaed;
+  --bg:#ffffff; --bg-soft:#f8f9fa; --card:#ffffff;
+  --radius:16px; --shadow:0 1px 3px rgba(60,64,67,.12),0 1px 2px rgba(60,64,67,.08);
+  --shadow-h:0 2px 8px rgba(60,64,67,.18);
+  --font:"Pretendard Variable","Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:var(--font);color:var(--navy);background:var(--bg);
+  line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:860px;margin:0 auto;padding:36px 22px 90px;}
+h1,h2,h3{line-height:1.3;color:var(--navy);}
+h1{font-size:2rem;font-weight:800;margin:.2em 0 .3em;}
+h2{font-size:1.4rem;font-weight:700;margin:1.8em 0 .5em;}
+h3{font-size:1.1rem;font-weight:700;margin:1.4em 0 .4em;}
+p{margin:.5em 0;}
+a{color:var(--blue-d);}
+small{color:var(--gray);}
+.lead{color:var(--gray);font-size:1.05rem;margin-bottom:.4em;}
+
+/* 헤더 배지(모듈 상단) */
+.mod-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:700;
+  padding:5px 12px;border-radius:999px;background:var(--blue-l);color:var(--blue-d);}
+.pill.green{background:var(--green-l);color:var(--green);}
+.pill.yellow{background:var(--yellow-l);color:#b06000;}
+.pill.gray{background:#f1f3f4;color:var(--gray);}
+
+/* 역량 매핑 배너 */
+.map{background:var(--bg-soft);border:1px solid var(--line-l);border-radius:12px;
+  padding:14px 16px;margin:14px 0;font-size:.92rem;color:var(--gray);}
+.map b{color:var(--navy);}
+
+/* 카드 */
+.card{background:var(--card);border:1px solid var(--line-l);border-radius:var(--radius);
+  padding:20px 22px;margin:16px 0;box-shadow:var(--shadow);}
+.card h3{margin-top:0;}
+.grid{display:grid;gap:14px;}
+.grid.c2{grid-template-columns:repeat(2,1fr);}
+.grid.c3{grid-template-columns:repeat(3,1fr);}
+@media(max-width:680px){.grid.c2,.grid.c3{grid-template-columns:1fr;}}
+
+/* 단계 번호 */
+.step{display:flex;gap:14px;margin:14px 0;}
+.step .n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;
+  font-weight:800;display:grid;place-items:center;font-size:1rem;}
+.step .b{flex:1;}
+.step .b h3{margin:.1em 0 .2em;font-size:1.02rem;}
+.step .b p{margin:.2em 0;color:var(--gray);font-size:.96rem;}
+
+/* 프롬프트 박스 */
+.prompt{position:relative;background:#f6f8fc;border:1px solid var(--line-l);
+  border-left:4px solid var(--blue);border-radius:10px;margin:12px 0;}
+.prompt .copy{position:absolute;top:10px;right:10px;border:0;background:var(--blue);color:#fff;
+  font-family:inherit;font-weight:700;font-size:.82rem;padding:7px 12px;border-radius:8px;cursor:pointer;}
+.prompt .copy:hover{background:var(--blue-d);}
+.prompt pre{margin:0;padding:18px 18px 16px;white-space:pre-wrap;word-break:break-word;
+  font-family:var(--font);font-size:.95rem;line-height:1.6;color:#202124;}
+.prompt.code{border-left-color:var(--purple);}
+.prompt.code pre{font-family:"SF Mono",Consolas,"D2Coding",monospace;font-size:.86rem;background:#1e1e2e;color:#e6e6f0;border-radius:0 0 10px 10px;}
+.tip{background:var(--yellow-l);border-radius:10px;padding:12px 16px;margin:12px 0;font-size:.93rem;}
+.tip b{color:#b06000;}
+.note{background:var(--green-l);border-radius:10px;padding:12px 16px;margin:12px 0;font-size:.93rem;}
+
+/* 학교급 레인 뱃지 (본문 내) */
+.lane-tag{display:inline-block;font-size:.76rem;font-weight:800;padding:3px 9px;border-radius:6px;margin-right:6px;}
+.lane-tag.elem{background:var(--blue-l);color:var(--blue-d);}
+.lane-tag.mid{background:var(--green-l);color:var(--green);}
+.lane-tag.high{background:#f3e8fd;color:var(--purple);}
+[data-level]{display:none;}
+body.lv-elem [data-level~="elem"],
+body.lv-mid  [data-level~="mid"],
+body.lv-high [data-level~="high"]{display:block;}
+tr[data-level],li[data-level],span[data-level]{display:none;}
+body.lv-elem tr[data-level~="elem"],body.lv-mid tr[data-level~="mid"],body.lv-high tr[data-level~="high"]{display:table-row;}
+body.lv-elem li[data-level~="elem"],body.lv-mid li[data-level~="mid"],body.lv-high li[data-level~="high"]{display:list-item;}
+body.lv-elem span[data-level~="elem"],body.lv-mid span[data-level~="mid"],body.lv-high span[data-level~="high"]{display:inline;}
+
+/* 표 */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.93rem;}
+th,td{border:1px solid var(--line-l);padding:10px 12px;text-align:left;vertical-align:top;}
+th{background:var(--bg-soft);font-weight:700;}
+
+/* 퀴즈 / 완료 */
+.finish{margin-top:30px;border-top:2px solid var(--line-l);padding-top:22px;}
+.quiz-q{margin:12px 0;}
+.quiz-q .opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fff;
+  font-family:inherit;font-size:.95rem;padding:11px 14px;border-radius:9px;margin:7px 0;cursor:pointer;transition:.12s;}
+.quiz-q .opt:hover{border-color:var(--blue);background:var(--blue-l);}
+.quiz-q .opt.ok{border-color:var(--green);background:var(--green-l);}
+.quiz-q .opt.no{border-color:var(--red);background:#fce8e6;}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;background:var(--blue);color:#fff;
+  font-family:inherit;font-weight:700;font-size:1rem;padding:13px 22px;border-radius:999px;cursor:pointer;text-decoration:none;}
+.btn:hover{background:var(--blue-d);}
+.btn.ghost{background:#fff;color:var(--blue-d);border:1px solid var(--line);}
+.badge-get{display:flex;align-items:center;gap:14px;background:var(--blue-l);border-radius:14px;padding:16px 18px;margin:14px 0;}
+.badge-get .ico{width:46px;height:46px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:1.4rem;flex:none;}
+
+/* 홈 모듈 카드 그리드 */
+.mcard{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line-l);
+  border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);transition:.15s;cursor:pointer;}
+.mcard:hover{box-shadow:var(--shadow-h);transform:translateY(-2px);border-color:var(--blue);}
+.mcard .num{font-size:.8rem;font-weight:800;color:var(--blue);}
+.mcard h3{margin:.2em 0 .25em;font-size:1.05rem;}
+.mcard p{margin:0;color:var(--gray);font-size:.9rem;}
+
+/* GES 공식 접속 배너 */
+.ges-banner{display:flex;gap:20px;align-items:center;flex-wrap:wrap;
+  background:linear-gradient(135deg,#1a73e8,#1967d2);color:#fff;border-radius:18px;
+  padding:24px 26px;margin:18px 0;box-shadow:0 4px 16px rgba(26,115,232,.28);}
+.ges-banner.end{background:linear-gradient(135deg,#9334e6,#1a73e8);}
+.ges-banner .ges-txt{flex:1 1 300px;}
+.ges-banner h2{color:#fff;}
+.ges-banner .lead,.ges-banner small{color:#eaf1fe;}
+.ges-banner .pill{background:rgba(255,255,255,.22);color:#fff;}
+.ges-banner .ges-links{display:flex;flex-direction:column;gap:9px;flex:0 0 auto;min-width:230px;}
+.ges-banner .ges-links small{text-align:center;opacity:.9;}
+.ges-banner .btn{background:#fff;color:var(--blue-d);justify-content:center;}
+.ges-banner .btn:hover{background:#f1f3f4;}
+.ges-banner .btn.ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.6);}
+.ges-banner .btn.ghost:hover{background:rgba(255,255,255,.24);}
+@media(max-width:560px){.ges-banner .ges-links{width:100%;}}
+
+.hero{background:linear-gradient(135deg,#e8f0fe,#f3e8fd);border-radius:20px;padding:34px 28px;margin-bottom:20px;}
+.hero h1{margin:.1em 0;}
+.foot{margin-top:40px;color:var(--gray);font-size:.85rem;text-align:center;}

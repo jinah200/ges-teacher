@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모듈 5 · 의사결정 대시보드</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="mod-head">
+    <span class="pill">MODULE 5 · 결정</span>
+    <span class="pill gray">약 25분</span>
+  </div>
+  <h1>데이터로 결정하는 대시보드</h1>
+  <p class="lead">모듈 2에서 모은 진단·형성평가 응답을, Apps Script로 데이터 창구(API)를 만들고 Gemini Canvas로 <b>실시간 대시보드</b>로 봅니다. '감'이 아니라 '숫자'로 개별화를 결정합니다.</p>
+  <div class="map">
+    <b>역량</b> — 데이터 기반 교수·학습 설계 &nbsp;|&nbsp; <b>배지</b> — Intro to Vibe Coding
+  </div>
+
+  <h2>학교급별 목표</h2>
+  <div class="card">
+    <p data-level="elem"><span class="lane-tag elem">초등</span> 대시보드 <b>체험</b>까지 — 강사 데모로 '데이터로 보면 결정이 달라진다'를 경험.</p>
+    <p data-level="mid"><span class="lane-tag mid">중등</span> 대시보드 <b>직접 제작</b> — 내 진단 시트로 API를 만들고 차트를 띄웁니다.</p>
+    <p data-level="high"><span class="lane-tag high">고등</span> <b>심화</b> — 필터·검색·학생별 상세까지 붙여 개별 지도에 활용.</p>
+  </div>
+
+  <h2>실습 · 3단계</h2>
+  <div class="step"><div class="n">1</div><div class="b">
+    <h3>진단 응답 시트 열기</h3>
+    <p>모듈 2에서 만든 폼의 <b>응답 시트</b>를 엽니다. (폼 → 응답 → 스프레드시트로 연결)</p>
+  </div></div>
+
+  <div class="step"><div class="n">2</div><div class="b">
+    <h3>Apps Script로 데이터 창구(JSON API) 만들기</h3>
+    <p>시트 상단 <b>확장 프로그램 → Apps Script</b>에서 아래 코드를 붙여넣고, <b>배포 → 새 배포 → 웹 앱</b>(액세스: 모든 사용자)으로 배포합니다. 배포 후 나오는 <b>웹 앱 URL</b>을 복사해 두세요.</p>
+    <div class="prompt code">
+      <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
+      <pre>function doGet(e) {
+  // 첫 번째 시트(응답 시트)를 사용합니다. 빈 '시트1'이 앞에 있으면
+  // getSheetByName('설문지 응답 시트1') 로 바꿔주세요.
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+  const data = sheet.getDataRange().getValues();
+  const headers = data[0];
+  const rows = data.slice(1);
+  const result = rows
+    .filter(row => row.join('').trim() !== '')
+    .map(row => {
+      let obj = {};
+      headers.forEach((header, index) => {
+        if (row[index] instanceof Date) {
+          obj[header] = row[index].toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
+        } else {
+          obj[header] = row[index];
+        }
+      });
+      return obj;
+    });
+  return ContentService.createTextOutput(JSON.stringify(result))
+    .setMimeType(ContentService.MimeType.JSON);
+}</pre>
+    </div>
+  </div></div>
+
+  <div class="step"><div class="n">3</div><div class="b">
+    <h3>Gemini Canvas로 대시보드 빌드하기</h3>
+    <p>Gemini 채팅에서 Canvas를 열고 아래를 붙여넣습니다. <b>[웹 앱 URL]</b>에 2단계에서 복사한 주소를 넣으세요.</p>
+    <div class="prompt">
+      <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
+      <pre>나는 구글 폼 응답을 Apps Script로 JSON API로 배포했어. API 주소는 '[웹 앱 URL]' 이야.
+이 API를 fetch로 불러와, 교사가 '학생 진단 결과로 수업을 결정'하는 실시간 대시보드를 HTML/CSS/JS 단일 파일로 만들어줘.
+
+[데이터·실시간 규칙 — 반드시 지킬 것]
+- API 주소 끝에 '?t='+Date.now() 를 붙여 fetch 해서 캐시를 피하고, 30초마다 다시 불러와 갱신해줘.
+- 응답은 [{헤더: 값}] JSON 배열이야. 각 값을 '원문 그대로' 쓰고, 지어내지 마. 하드코딩·샘플 데이터 금지.
+- 불러오기에 실패하면 예시 차트를 그리지 말고, 빨간 오류 박스로 이유(주소·배포 권한 확인)를 보여줘.
+- 빈 값은 집계에서 제외해.
+
+[상단 KPI 카드] ① 총 응답 수 ② 가장 많은 응답 항목 ③ 이해도 자기평가 평균(있으면) ④ 도움이 필요한 학생 수(기준은 데이터에 맞게)
+
+[차트 — Chart.js, 값/퍼센트 라벨과 범례 포함]
+1. 문항별 응답 분포 (가로 막대)
+2. 학년/반별 분포 (세로 막대)
+3. 이해도·성향 분포 (도넛 또는 파이)
+
+[인사이트] 각 차트 아래에 '교사가 이 데이터로 무슨 결정을 내리는지' 한 줄씩. 맨 아래에 '데이터 기반 수업 제안' 카드.
+
+[디자인] 밝고 화사한 카드형. 딥네이비 배경에 시안·민트·코랄 포인트. 둥근 카드, 부드러운 그림자, KPI 숫자는 크게. 상단에 'LIVE 동기화 중 · 다음 새로고침 N초' 상태 바. 모바일에서는 1열로 쌓이게.</pre>
+    </div>
+    <div data-level="high">
+      <h3 style="margin-top:18px;">심화 · 학생별 상세 붙이기 <span class="lane-tag high">고등</span></h3>
+      <div class="prompt">
+        <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
+        <pre>방금 만든 대시보드에 두 가지를 추가해줘. 새 데이터는 지어내지 말고 이미 불러온 데이터만 써.
+1) 하단 검색창: 이름을 입력하면 그 학생의 모든 응답을 카드로 보여줘.
+2) 필터: 각 열의 드롭다운은 데이터에 실제로 존재하는 값만 자동 추출(unique)해서 채우고, 여러 필터는 교집합(AND)으로 학생 표를 걸러줘.</pre>
+      </div>
+    </div>
+  </div></div>
+  <div class="tip"><b>TIP</b> 결과가 예상과 다르면 "장소/항목이 안 보여", "이렇게 바꿔줘"처럼 대화로 고쳐 나가면 됩니다. 디버깅도 AI와 함께 하는 과정이에요.</div>
+
+  <div class="finish">
+    <h2>🏅 배지 퀴즈</h2>
+    <div class="quiz" data-badge="m5-vibe" data-badge-label="Intro to Vibe Coding">
+      <div class="quiz-q" data-answer="2">
+        <p><b>Q1.</b> doGet 코드가 하는 일은?</p>
+        <button class="opt">폼을 새로 만든다</button>
+        <button class="opt">학생에게 메일을 보낸다</button>
+        <button class="opt">시트 데이터를 JSON으로 내보내는 창구(API)를 만든다</button>
+      </div>
+      <div class="quiz-q" data-answer="0">
+        <p><b>Q2.</b> 대시보드 프롬프트에서 "하드코딩·샘플 데이터 금지"를 넣는 이유는?</p>
+        <button class="opt">실제 내 학생 데이터만 쓰게 하려고</button>
+        <button class="opt">차트를 예쁘게 하려고</button>
+        <button class="opt">속도를 높이려고</button>
+      </div>
+      <p class="quiz-result" style="display:none;font-weight:700;margin-top:10px;"></p>
+    </div>
+    <div class="badge-get"><div class="ico">📊</div><div><b>Intro to Vibe Coding</b> 역량 — 코드를 몰라도 AI로 데이터 도구 만들기.</div></div>
+  </div>
+  <div class="foot">AI로 만드는 우리 수업 · 모듈 5</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
