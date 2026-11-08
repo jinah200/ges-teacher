@@ -3,20 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>홈 · AI로 만드는 우리 수업</title>
-<link rel="stylesheet" href="style.css?v=20261108d">
+<title>홈 · GES 교실 BUG 해결 워크숍</title>
+<link rel="stylesheet" href="style.css?v=20261108e">
 </head>
 <body>
 <div class="wrap">
 
   <div class="hero">
     <div class="mod-head">
-      <span class="pill">교사 연수</span>
-      <span class="pill green">GES 연계</span>
-      <span class="pill gray">초 · 중 · 고</span>
+      <span class="pill">GES 실습 세션</span>
+      <span class="pill green">Gemini · Gemini Notebook</span>
+      <span class="pill gray">초 · 중 · 고 교사</span>
     </div>
-    <h1>AI로 만드는 우리 수업</h1>
-    <p class="lead">Gemini와 Gemini Notebook으로 "수업 한 단원을 기획부터 자동화까지" 직접 만들어 보는 교사 연수입니다. 오늘 하루, 바로 교실에서 쓸 결과물 5개를 손에 들고 나갑니다. (자동화는 심화 선택)</p>
+    <div class="hero-kicker">Gemini &amp; Gemini Notebook으로 끝내는</div>
+    <h1 class="hero-title">🐞 교실 <span class="bugw">BUG</span> 해결 워크숍</h1>
+    <p class="hero-sub">구글의 풍성한 생태계와 구글 AI만의 장점을 활용하여 <b>교실 속 문제를 해결하는 아이디어와 활용 사례</b>를 공유하는 실습 세션</p>
+    <div class="bugflow">
+      <span class="bf"><b>🔍 BUG 찾기</b>교실 속 불편·반복 업무</span><i>→</i>
+      <span class="bf"><b>🛠 고치기</b>Gemini · Notebook · Canvas</span><i>→</i>
+      <span class="bf"><b>🚀 나누기</b>결과물·사례 공유</span>
+    </div>
+    <p class="lead" style="margin-top:14px;">수업 한 단원을 기획부터 대시보드까지 직접 만들어 보며, 오늘 바로 교실에서 쓸 결과물 5개를 손에 들고 나갑니다. (자동화는 심화 선택)</p>
     <p style="margin-top:14px;"><span class="lane-tag elem">초등</span><span class="lane-tag mid">중등</span><span class="lane-tag high">고등</span> — 상단 <b>학교급 토글</b>을 바꾸면 모든 모듈의 예시·프롬프트가 내 학교급에 맞게 바뀝니다.</p>
   </div>
 
@@ -82,10 +89,10 @@
     <a class="btn" href="https://www.wowideas.co.kr/bid_app/cwinfo.wowideas/share.workspace.php?prj_id=75OHPW&bc_code=sharews%3AM01001&bc_ctluser=d643396f-492c-4e06-ae36-0357eb003330" target="_blank" rel="noopener">🔗 와우아이디어스 열기</a>
   </div>
 
-  <div class="foot">AI로 만드는 우리 수업 · 초·중·고 교사 연수 (GES 연계)</div>
+  <div class="foot">GES 교실 BUG 해결 워크숍 · 초·중·고 교사 연수 (GES 연계)</div>
 </div>
 
-<script src="app.js?v=20261108d"></script>
+<script src="app.js?v=20261108e"></script>
 <script>
   document.querySelectorAll('.mcard').forEach(function(c){
     c.addEventListener('click',function(){ try{ window.parent.postMessage({type:'goto',src:c.dataset.go},'*'); }catch(e){} });

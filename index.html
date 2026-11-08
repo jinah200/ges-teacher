@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI로 만드는 우리 수업 · 초·중·고 교사 연수 (GES 연계)</title>
+<title>🐞 GES 교실 BUG 해결 워크숍 · Gemini & Gemini Notebook</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
 <style>
@@ -14,7 +14,11 @@
     font-family:"Pretendard Variable","Pretendard","Noto Sans KR",-apple-system,system-ui,sans-serif;color:var(--navy);background:#fff;}
   .topbar{flex:none;display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:9px 18px;
     background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #e8eaed;}
-  .brand{font-weight:800;font-size:.98rem;display:flex;align-items:center;gap:8px;white-space:nowrap;}
+  .brand{font-weight:800;font-size:1.05rem;display:flex;align-items:center;gap:8px;white-space:nowrap;}
+  .brand .bug{font-size:1.15rem;line-height:1;}
+  .brand .bt b{color:#d93025;}
+  .brand .bsub{font-size:.74rem;font-weight:600;color:var(--gray);background:#f1f3f4;border-radius:999px;padding:2px 8px;}
+  @media(max-width:900px){.brand .bsub{display:none;}}
   .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgba(26,115,232,.18);}
   /* 학교급 토글 */
   .levels{display:flex;gap:3px;background:#f1f3f4;border-radius:999px;padding:3px;}
@@ -27,10 +31,12 @@
   .tab .s{display:block;font-size:.68rem;font-weight:600;color:var(--gray);}
   .tab:hover{border-color:var(--blue);color:var(--blue-d);}
   .tab.active{background:#e8f0fe;color:var(--blue-d);}
-  .ges-top{margin-left:auto;background:#1a73e8;color:#fff;text-decoration:none;font-weight:700;
+  .acts{margin-left:auto;display:flex;gap:8px;align-items:center;}
+  .tabs{order:5;flex-basis:100%;justify-content:flex-start;padding-top:2px;}
+  .ges-top{background:#1a73e8;color:#fff;text-decoration:none;font-weight:700;
     font-size:.82rem;padding:7px 14px;border-radius:999px;white-space:nowrap;transition:.14s;}
   .ges-top:hover{background:#1967d2;}
-  .wow-top{background:#fff;color:#7b2cbf;border:1.5px solid #7b2cbf;text-decoration:none;font-weight:700;font-size:.84rem;padding:6px 12px;border-radius:999px;white-space:nowrap;margin-left:8px;}
+  .wow-top{background:#fff;color:#7b2cbf;border:1.5px solid #7b2cbf;text-decoration:none;font-weight:700;font-size:.84rem;padding:6px 12px;border-radius:999px;white-space:nowrap;}
   .wow-top:hover{background:#f5ecfc;}
   .prog{display:flex;align-items:center;gap:7px;font-size:.82rem;font-weight:700;color:var(--gray);white-space:nowrap;}
   .prog .b{color:var(--blue-d);}
@@ -41,7 +47,7 @@
 </head>
 <body>
 <header class="topbar">
-  <div class="brand"><span class="dot"></span>AI로 만드는 우리 수업</div>
+  <div class="brand"><span class="bug">🐞</span><span class="bt">GES 교실 <b>BUG</b> 해결 워크숍</span><span class="bsub">Gemini &amp; Gemini Notebook</span></div>
   <div class="levels" id="levels" title="학교급 선택">
     <button data-lv="elem" class="on">초등</button>
     <button data-lv="mid">중등</button>
@@ -59,14 +65,16 @@
     <button class="tab" data-src="module5.html">M5<span class="s">대시보드</span></button>
     <button class="tab" data-src="module6.html">심화<span class="s">자동화·선택</span></button>
   </nav>
+  <div class="acts">
   <a class="ges-top" href="https://쌤.닷컴/26ges" target="_blank" rel="noopener" title="GES 공식 연수 바로가기">🎓 GES 바로가기</a>
   <a class="wow-top" href="https://www.wowideas.co.kr/bid_app/cwinfo.wowideas/share.workspace.php?prj_id=75OHPW&bc_code=sharews%3AM01001&bc_ctluser=d643396f-492c-4e06-ae36-0357eb003330" target="_blank" rel="noopener" title="와우아이디어스에 결과물 옮기기">📤 와우아이디어스</a>
+  </div>
 </header>
-<div class="stage"><iframe id="frame" src="home.html?v=20261108d" title="연수 교안"></iframe></div>
+<div class="stage"><iframe id="frame" src="home.html?v=20261108e" title="연수 교안"></iframe></div>
 
 <script>
 (function(){
-  var frame=document.getElementById('frame'); var VER='20261108d'; function U(s){ return s+'?v='+VER; }
+  var frame=document.getElementById('frame'); var VER='20261108e'; function U(s){ return s+'?v='+VER; }
   var tabs=[].slice.call(document.querySelectorAll('.tab'));
   var levelBtns=[].slice.call(document.querySelectorAll('#levels button'));
 

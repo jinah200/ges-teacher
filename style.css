@@ -205,3 +205,14 @@ body.hasb .wrap{max-width:1080px;}
 .example{margin:16px 0 6px;border:1px solid var(--line-l);border-radius:16px;overflow:hidden;background:#fff;}
 .example img{display:block;width:100%;height:auto;max-height:440px;object-fit:cover;}
 .example .excap{padding:12px 16px;font-size:.93rem;line-height:1.6;}
+
+/* 워크숍 히어로 */
+.hero-kicker{margin-top:14px;font-weight:700;color:var(--blue-d);font-size:1.05rem;}
+.hero .hero-title{font-size:2.5rem;line-height:1.2;margin:.15em 0 .3em;letter-spacing:-.02em;}
+.hero .bugw{color:#d93025;background:#fce8e6;border-radius:10px;padding:0 .18em;}
+.hero-sub{font-size:1.12rem;line-height:1.65;color:var(--navy);margin:0 0 14px;}
+.bugflow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:6px;}
+.bugflow .bf{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line-l);border-radius:12px;padding:9px 14px;font-size:.84rem;color:var(--gray);line-height:1.4;}
+.bugflow .bf b{color:var(--navy);font-size:.95rem;}
+.bugflow i{font-style:normal;color:var(--gray);}
+@media(max-width:600px){.hero .hero-title{font-size:1.85rem;}.bugflow i{display:none;}}
