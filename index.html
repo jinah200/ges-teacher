@@ -30,6 +30,8 @@
   .ges-top{margin-left:auto;background:#1a73e8;color:#fff;text-decoration:none;font-weight:700;
     font-size:.82rem;padding:7px 14px;border-radius:999px;white-space:nowrap;transition:.14s;}
   .ges-top:hover{background:#1967d2;}
+  .wow-top{background:#fff;color:#7b2cbf;border:1.5px solid #7b2cbf;text-decoration:none;font-weight:700;font-size:.84rem;padding:6px 12px;border-radius:999px;white-space:nowrap;margin-left:8px;}
+  .wow-top:hover{background:#f5ecfc;}
   .prog{display:flex;align-items:center;gap:7px;font-size:.82rem;font-weight:700;color:var(--gray);white-space:nowrap;}
   .prog .b{color:var(--blue-d);}
   .stage{flex:1;position:relative;background:#fff;}
@@ -49,15 +51,16 @@
     <button class="tab active" data-src="home.html">🏠 홈</button>
     <button class="tab" data-src="intro.html">인트로</button>
     <button class="tab" data-src="prep.html">준비물</button>
+    <button class="tab" data-src="module0.html">프롬프트<span class="s">맥락·메타·리버스</span></button>
     <button class="tab" data-src="module1.html">M1<span class="s">마스코트</span></button>
     <button class="tab" data-src="module2.html">M2<span class="s">진단폼</span></button>
     <button class="tab" data-src="module3.html">M3<span class="s">Notebook</span></button>
     <button class="tab" data-src="module4.html">M4<span class="s">안내</span></button>
     <button class="tab" data-src="module5.html">M5<span class="s">대시보드</span></button>
-    <button class="tab" data-src="module6.html">M6<span class="s">자동화</span></button>
+    <button class="tab" data-src="module6.html">심화<span class="s">자동화·선택</span></button>
   </nav>
-  <a class="ges-top" href="https://쌤.닷컴/ges" target="_blank" rel="noopener" title="GES 공식 연수 바로가기">🎓 GES 바로가기</a>
-  <div class="prog">🏅 배지 <span class="b" id="bcount">0</span>/8</div>
+  <a class="ges-top" href="https://쌤.닷컴/26ges" target="_blank" rel="noopener" title="GES 공식 연수 바로가기">🎓 GES 바로가기</a>
+  <a class="wow-top" href="https://www.wowideas.co.kr/bid_app/cwinfo.wowideas/share.workspace.php?prj_id=75OHPW&bc_code=sharews%3AM01001&bc_ctluser=d643396f-492c-4e06-ae36-0357eb003330" target="_blank" rel="noopener" title="와우아이디어스에 결과물 옮기기">📤 와우아이디어스</a>
 </header>
 <div class="stage"><iframe id="frame" src="home.html" title="연수 교안"></iframe></div>
 
@@ -90,18 +93,15 @@
     try{ frame.contentWindow.postMessage({type:'set-level',level:curLevel()},'*'); }catch(e){}
   });
 
-  // 자식 → 부모 메시지 (배지 수, 홈 카드 클릭 이동, 레벨 변경 동기화)
+  // 자식 → 부모 메시지 (홈 카드 클릭 이동, 레벨 변경 동기화)
   window.addEventListener('message',function(ev){
     var d=ev.data||{};
-    if(d.type==='badges'){ document.getElementById('bcount').textContent=d.count; }
     if(d.type==='goto'&&d.src){ activate(d.src); }
     if(d.type==='level-changed'){
       levelBtns.forEach(function(b){ b.classList.toggle('on',b.dataset.lv===d.level); });
     }
   });
 
-  // 초기 배지 수 표시
-  try{ var b=JSON.parse(localStorage.getItem('ges_badges')||'{}'); document.getElementById('bcount').textContent=Object.keys(b).length; }catch(e){}
 })();
 </script>
 </body>

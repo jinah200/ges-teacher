@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>모듈 6 · 업무 자동화</title>
+<title>심화(선택) · 업무 자동화</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="wrap">
   <div class="mod-head">
-    <span class="pill">MODULE 6 · 자동화</span>
+    <span class="pill gray">심화 · 선택</span>
     <span class="pill gray">약 20분</span>
   </div>
-  <h1>업무 자동화 로봇 만들기</h1>
+  <h1>[심화] 업무 자동화 로봇 만들기</h1>
+  <div class="note"><b>선택 모듈입니다.</b> 코드 붙여넣기와 트리거 설정이 필요해 처음에는 어려울 수 있어요. 모듈 1~5를 마치고 시간이 남거나, 자동화에 관심 있는 분만 따라오세요. 건너뛰어도 연수 흐름에는 지장이 없습니다.</div>
   <p class="lead">폼에 제출이 들어오면 — 아무도 건드리지 않아도 — 맞춤 결과물이 만들어져 메일로 발송됩니다. Apps Script <b>트리거</b>로 사람 없이 돌아가는 자동화를 만듭니다.</p>
   <div class="map">
-    <b>역량</b> — 교사 업무 효율·전문성 (반복을 시스템으로) &nbsp;|&nbsp; <b>배지</b> — Engagement(Admin)
+    <b>역량</b> — 교사 업무 효율·전문성 (반복을 시스템으로)
   </div>
 
   <h2>무엇을 자동화하나요?</h2>
@@ -34,6 +35,8 @@
     <div class="step"><div class="n">3</div><div class="b"><h3>슬라이드 복사·치환</h3><p>템플릿의 {{이름}}·{{소감}}·{{응모번호}} 치환, '사진자리' 도형을 업로드 사진으로 교체</p></div></div>
     <div class="step"><div class="n">4</div><div class="b"><h3>PDF 변환·메일 발송</h3><p>완성본을 PDF로 바꿔 신청자 이메일로 자동 발송</p></div></div>
   </div>
+
+  <div class="ctx"><b>🧭 맥락 TIP</b> 자동화 프롬프트에는 <b>폼 질문 제목, 슬라이드 표식, 시트 열 이름</b>처럼 "내 파일의 실제 이름"을 그대로 알려 주세요. AI는 내 파일을 볼 수 없어서, 이름이 하나라도 다르면 코드가 동작하지 않습니다.</div>
 
   <h2>실습 ① · AI로 코드 받기</h2>
   <p class="lead">아래 프롬프트를 Gemini에 붙여넣으면 거의 완성된 Apps Script 코드를 만들어 줍니다.</p>
@@ -119,26 +122,17 @@ function onFormSubmit(e) {
   <div class="tip"><b>핵심</b> ① 폼 질문 이름(이메일·이름·소감·사진) ② 슬라이드 표식({{이름}}·{{소감}}·{{응모번호}}·대체 텍스트 '사진자리') ③ 트리거 설정(onFormSubmit) — 이 세 가지만 맞으면 작동합니다.</div>
   <div class="note"><b>보안 권한</b> 첫 실행 때 구글 권한 승인이 뜹니다. 본인 계정으로 승인해야 메일 발송·드라이브 접근이 됩니다.</div>
 
-  <div class="finish">
-    <h2>🏅 배지 퀴즈</h2>
-    <div class="quiz" data-badge="m6-admin" data-badge-label="Engagement (Admin)">
-      <div class="quiz-q" data-answer="1">
-        <p><b>Q1.</b> onFormSubmit은 언제 실행되나요?</p>
-        <button class="opt">매일 정해진 시각에</button>
-        <button class="opt">폼이 제출되는 순간(트리거)</button>
-        <button class="opt">교사가 버튼을 누를 때만</button>
-      </div>
-      <div class="quiz-q" data-answer="2">
-        <p><b>Q2.</b> 동시에 여러 명이 제출해도 번호가 안 겹치게 하는 방법은?</p>
-        <button class="opt">교사가 수동으로 센다</button>
-        <button class="opt">랜덤 숫자를 쓴다</button>
-        <button class="opt">e.range.getRow()로 행 번호를 쓴다</button>
-      </div>
-      <p class="quiz-result" style="display:none;font-weight:700;margin-top:10px;"></p>
-    </div>
-    <div class="badge-get"><div class="ico">🤖</div><div><b>Engagement (Admin)</b> 역량 — 반복 업무를 자동화 시스템으로. "이 반복은 자동화할 수 있다"는 눈이 오늘의 성과입니다.</div></div>
+  <div class="tip"><b>💡 TIP</b> <b>사본으로 먼저</b> — 원본 폼·슬라이드를 복사해 두고, 사본에서 시험하세요.</div>
+  <div class="tip"><b>💡 TIP</b> <b>내 메일로 먼저</b> — 처음 테스트 제출은 내 메일 주소로 해서 발송 내용을 확인하세요.</div>
+  <div class="tip"><b>💡 TIP</b> <b>오류는 그대로 붙여넣기</b> — 빨간 오류 메시지를 복사해 AI에게 "이 오류를 고쳐 줘"라고 하면 대부분 해결됩니다.</div>
+  <div class="tip"><b>💡 TIP</b> <b>개인정보</b> — 학생·학부모에게 메일을 보내는 자동화는 학교의 개인정보·정보보안 지침을 먼저 확인하세요.</div>
+
+  <div class="wow">
+    <h2>📤 내 결과물을 와우아이디어스에 옮기기</h2>
+    <p>이번 모듈에서 만든 <b>자동화 프롬프트와 Apps Script 코드</b>를 와우아이디어스 워크스페이스에 정리해 두세요.</p>
+    <a class="btn" href="https://www.wowideas.co.kr/bid_app/cwinfo.wowideas/share.workspace.php?prj_id=75OHPW&bc_code=sharews%3AM01001&bc_ctluser=d643396f-492c-4e06-ae36-0357eb003330" target="_blank" rel="noopener">🔗 와우아이디어스 열기</a>
   </div>
-  <div class="foot">AI로 만드는 우리 수업 · 모듈 6</div>
+  <div class="foot">AI로 만드는 우리 수업 · 심화(선택)</div>
 </div>
 <script src="app.js"></script>
 </body>

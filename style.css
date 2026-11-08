@@ -130,3 +130,13 @@ th{background:var(--bg-soft);font-weight:700;}
 .hero{background:linear-gradient(135deg,#e8f0fe,#f3e8fd);border-radius:20px;padding:34px 28px;margin-bottom:20px;}
 .hero h1{margin:.1em 0;}
 .foot{margin-top:40px;color:var(--gray);font-size:.85rem;text-align:center;}
+
+/* 와우아이디어스 이동 블록 */
+.wow{margin-top:30px;border-top:2px solid var(--line-l);padding-top:22px;}
+.wow h2{margin-top:0;}
+.wow .btn{display:inline-block;background:#7b2cbf;color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:10px;}
+.wow .btn:hover{background:#6420a0;}
+
+/* 맥락 TIP */
+.ctx{background:var(--blue-l);border-left:4px solid var(--blue);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.93rem;}
+.ctx b:first-child{color:var(--blue-d);}

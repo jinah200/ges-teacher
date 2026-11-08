@@ -15,7 +15,7 @@
   <h1>학생 진단 폼 설계하기</h1>
   <p class="lead">수업 설계의 출발은 '우리 학생이 지금 어디에 있는가'입니다. AI와 대화하며 빠진 항목 없는 진단·수요조사 구글 폼을 설계합니다. 여기서 모은 데이터는 모듈 5(대시보드)로 이어집니다.</p>
   <div class="map">
-    <b>역량</b> — 교수·학습 방법 및 평가 설계 &nbsp;|&nbsp; <b>배지</b> — (연계) Engagement
+    <b>역량</b> — 교수·학습 방법 및 평가 설계
   </div>
 
   <h2>무엇을 진단하나요?</h2>
@@ -24,6 +24,8 @@
     <p data-level="mid"><span class="lane-tag mid">중등</span> 교과 사전지식 진단 (단원 관련 선개념, 오개념, 자기평가).</p>
     <p data-level="high"><span class="lane-tag high">고등</span> 진로·탐구주제 수요조사 (관심 주제, 탐구 경험, 희망 활동).</p>
   </div>
+
+  <div class="ctx"><b>🧭 맥락 TIP</b> 진단 폼의 맥락은 <b>"왜 묻는가, 결과를 어디에 쓰는가"</b>입니다. 이 한 줄(예: "결과로 모둠을 편성할 거야")이 있으면 AI가 필요 없는 문항을 빼고 꼭 필요한 문항을 넣어 줍니다. 학급 인원과 응답에 쓸 시간도 알려 주세요.</div>
 
   <h2>실습 ① · 대화형으로 폼 설계하기</h2>
   <p class="lead">Gemini에 아래를 붙여넣으면, AI가 <b>한 번에 하나씩</b> 질문하며 빠진 항목 없이 폼을 함께 설계해 줍니다.</p>
@@ -46,6 +48,8 @@
 대화가 끝나면 구글 폼에 그대로 옮길 수 있는 문항 목록으로 정리해 줘.</pre>
   </div>
 
+  <div class="tip"><b>💡 TIP</b> 대화 중간에 헷갈리면 "지금까지 정리한 문항 목록을 먼저 보여 줘"라고 요청하세요. 방향을 바로잡기 쉽습니다.</div>
+
   <h2>실습 ② · 폼 사양 한 번에 받기</h2>
   <p class="lead">대화가 번거롭다면, 아래로 '구글 폼 양식 작성 도우미'에 바로 붙여넣을 사양을 한 번에 받을 수 있습니다.</p>
   <div class="prompt">
@@ -65,24 +69,15 @@
   <div class="tip"><b>TIP</b> 구글 폼 → 우측 상단 <b>[양식 작성 도우미(AI)]</b>에 위 출력을 붙여넣으면 설문이 자동으로 만들어집니다. 응답 시트는 모듈 5 대시보드의 재료가 됩니다.</div>
   <div class="note"><b>개인정보 유의</b> 지병·가정형편 등 민감정보는 설문으로 모으지 않습니다. 꼭 필요하면 "담임에게 개별로 알려 주세요" 안내 문구로 대체하세요.</div>
 
-  <div class="finish">
-    <h2>🏅 배지 퀴즈</h2>
-    <div class="quiz" data-badge="m2-engagement" data-badge-label="Engagement">
-      <div class="quiz-q" data-answer="1">
-        <p><b>Q1.</b> 대화형 설계 프롬프트의 장점은?</p>
-        <button class="opt">한 번에 모든 걸 다 물어 빠르다</button>
-        <button class="opt">한 번에 하나씩 물어 빠진 항목 없이 설계된다</button>
-        <button class="opt">교사가 아무것도 안 해도 된다</button>
-      </div>
-      <div class="quiz-q" data-answer="2">
-        <p><b>Q2.</b> 진단 폼에서 모으면 안 되는 것은?</p>
-        <button class="opt">이름·학년</button>
-        <button class="opt">이해도 자기평가</button>
-        <button class="opt">지병 등 민감정보</button>
-      </div>
-      <p class="quiz-result" style="display:none;font-weight:700;margin-top:10px;"></p>
-    </div>
-    <div class="badge-get"><div class="ico">📋</div><div><b>Engagement</b> 역량 — 데이터로 학생을 파악하는 진단 설계.</div></div>
+  <div class="tip"><b>💡 TIP</b> <b>학생이 5분 안에 끝낼 분량</b>으로 줄이세요. 문항이 많으면 응답 품질이 떨어집니다.</div>
+  <div class="tip"><b>💡 TIP</b> <b>먼저 교사가 직접 제출</b>해 보세요. 어색한 문항과 선택지 오류가 바로 보입니다.</div>
+  <div class="tip"><b>💡 TIP</b> <b>응답 시트의 열 이름은 바꾸지 마세요.</b> 모듈 5 대시보드가 이 이름을 보고 데이터를 읽습니다.</div>
+  <div class="tip"><b>💡 TIP</b> <b>나중에 분석할 문항은 객관식·척도형</b>으로 만드세요. 서술형은 많을수록 정리하기 어렵습니다.</div>
+
+  <div class="wow">
+    <h2>📤 내 결과물을 와우아이디어스에 옮기기</h2>
+    <p>이번 모듈에서 만든 <b>진단 폼 문항 목록과 폼 링크</b>를 와우아이디어스 워크스페이스에 정리해 두세요.</p>
+    <a class="btn" href="https://www.wowideas.co.kr/bid_app/cwinfo.wowideas/share.workspace.php?prj_id=75OHPW&bc_code=sharews%3AM01001&bc_ctluser=d643396f-492c-4e06-ae36-0357eb003330" target="_blank" rel="noopener">🔗 와우아이디어스 열기</a>
   </div>
   <div class="foot">AI로 만드는 우리 수업 · 모듈 2</div>
 </div>
