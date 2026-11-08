@@ -10,6 +10,7 @@
   function applyLevel(lv){
     document.body.classList.remove('lv-elem','lv-mid','lv-high');
     document.body.classList.add('lv-'+lv);
+    (window.__lvCbs||[]).forEach(function(f){ try{ f(lv); }catch(e){} });
   }
   window.__setLevel=function(lv){
     if(['elem','mid','high'].indexOf(lv)<0) return;

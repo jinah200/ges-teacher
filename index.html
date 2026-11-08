@@ -62,18 +62,18 @@
   <a class="ges-top" href="https://쌤.닷컴/26ges" target="_blank" rel="noopener" title="GES 공식 연수 바로가기">🎓 GES 바로가기</a>
   <a class="wow-top" href="https://www.wowideas.co.kr/bid_app/cwinfo.wowideas/share.workspace.php?prj_id=75OHPW&bc_code=sharews%3AM01001&bc_ctluser=d643396f-492c-4e06-ae36-0357eb003330" target="_blank" rel="noopener" title="와우아이디어스에 결과물 옮기기">📤 와우아이디어스</a>
 </header>
-<div class="stage"><iframe id="frame" src="home.html" title="연수 교안"></iframe></div>
+<div class="stage"><iframe id="frame" src="home.html?v=20261108d" title="연수 교안"></iframe></div>
 
 <script>
 (function(){
-  var frame=document.getElementById('frame');
+  var frame=document.getElementById('frame'); var VER='20261108d'; function U(s){ return s+'?v='+VER; }
   var tabs=[].slice.call(document.querySelectorAll('.tab'));
   var levelBtns=[].slice.call(document.querySelectorAll('#levels button'));
 
   // 탭 전환
   function activate(src){
     tabs.forEach(function(t){ t.classList.toggle('active',t.dataset.src===src); });
-    if(frame.getAttribute('src')!==src) frame.setAttribute('src',src);
+    if(frame.getAttribute('src')!==U(src)) frame.setAttribute('src',U(src));
   }
   tabs.forEach(function(t){ t.addEventListener('click',function(){ activate(t.dataset.src); }); });
 

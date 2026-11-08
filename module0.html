@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>프롬프트 설계 · 메타·리버스</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20261108d">
 </head>
 <body>
 <div class="wrap">
@@ -52,63 +52,34 @@
   </div>
   <div class="ctx"><b>🧭 맥락 TIP</b> 맥락은 <b>길게 쓰는 것</b>이 아니라 <b>관련 있는 것을 정확히 쓰는 것</b>입니다. 결과에 영향을 주지 않는 정보는 빼고, <b>학생 이름·성적·연락처 같은 개인정보는 넣지 않습니다.</b></div>
 
-  <h3>내 수업 맥락 카드 만들기</h3>
-  <p class="lead">매번 맥락을 새로 쓰기 번거로우니, 한 번 적어 두고 모든 프롬프트 앞에 붙여 쓰세요. 아래 틀을 복사해 내 상황으로 바꿔 메모장이나 문서에 저장합니다.</p>
-  <div class="prompt">
-    <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
-    <pre>[내 수업 맥락 카드]
-- 나: [[학교급·학년·교과, 예: 초등 5학년 담임]]
-- 우리 학생들: [[인원, 수준 분포, 특성, 예: 24명, 읽기 속도 차이가 큼]]
-- 자주 만드는 자료: [[활동지, 평가 문항, 안내문 등]]
-- 지키고 싶은 원칙: [[예: 어려운 한자어 사용 금지, 개인정보 넣지 않기]]
-- 문체: [[예: 담백하고 간결하게, 존댓말]]
-
-위 맥락을 항상 기억하고 아래 요청에 반영해 줘.
-[요청] [[여기에 오늘의 요청을 적기]]</pre>
+  <h2>GES가 소개하는 PARTS 프레임</h2>
+  <p class="lead">GES 첫걸음 세션은 프롬프트를 처음부터 쓸 때 <b>PARTS</b> 틀을 쓰라고 안내합니다. 막막할 때는 다섯 칸을 차례로 채우면 됩니다. 여기에 이 교안에서 강조하는 <b>맥락·제약</b>을 한 칸 더 붙였습니다.</p>
+  <div class="grid c3">
+    <div class="card"><b>P · Persona 역할</b><p style="margin:.3em 0 0;color:var(--gray);font-size:.93rem;">AI가 맡을 역할, 또는 내가 누구인지</p></div>
+    <div class="card"><b>A · Aim 목표</b><p style="margin:.3em 0 0;color:var(--gray);font-size:.93rem;">정확히 무엇을 얻고 싶은지</p></div>
+    <div class="card"><b>R · Recipients 대상</b><p style="margin:.3em 0 0;color:var(--gray);font-size:.93rem;">누가 쓰는지 (학년, 학부모 등)</p></div>
+    <div class="card"><b>T · Theme 분위기</b><p style="margin:.3em 0 0;color:var(--gray);font-size:.93rem;">어조와 스타일 (친근한, 격식 있는 등)</p></div>
+    <div class="card"><b>S · Structure 형식</b><p style="margin:.3em 0 0;color:var(--gray);font-size:.93rem;">표, 목록, 대본, 루브릭 등</p></div>
+    <div class="card"><b>+ 맥락·제약</b><p style="margin:.3em 0 0;color:var(--gray);font-size:.93rem;">근거 자료, 하지 말 것, 예시</p></div>
   </div>
+  <p class="lead" style="margin-top:14px;"><b>직접 조립해 보세요.</b> 왼쪽에서 칸마다 고르면 오른쪽에 프롬프트가 만들어집니다.</p>
+  <div class="builder" data-b="parts"></div>
+  <div class="tip"><b>💡 TIP</b> 첫 결과가 완벽할 필요는 없습니다. GES도 프롬프트는 <b>대화하며 고쳐 가는 것</b>이라고 안내합니다. 결과를 받은 뒤 "조금 딱딱해. 우리 반 학생들에게 맞게 더 대화체로 바꿔 줘"처럼 되받아 말해 보세요.</div>
+  <div class="tip"><b>💡 TIP</b> 무엇을 알려 줘야 할지 모르겠다면 이렇게 물어보세요. "나는 [[루브릭]]을 만들고 싶어. 결과가 더 좋아지려면 내가 어떤 정보를 줘야 해?" 이것이 바로 아래의 메타 프롬프트입니다.</div>
+
+  <h3>내 수업 맥락 카드 만들기</h3>
+  <p class="lead">매번 맥락을 새로 쓰기 번거로우니, 한 번 만들어 두고 모든 프롬프트 앞에 붙여 쓰세요. <b>왼쪽에서 고르면</b> 오른쪽 카드가 완성됩니다. 복사해 메모장이나 문서에 저장해 두세요.</p>
+  <div class="builder" data-b="card"></div>
   <div class="tip"><b>💡 TIP</b> 대화가 길어져 답이 엉뚱해지면, 지금까지의 합의 내용을 "요약해 줘"라고 한 뒤 <b>새 대화</b>를 열어 맥락 카드와 요약을 붙여 넣고 이어가세요.</div>
 
   <h2>① 메타 프롬프트</h2>
   <p class="lead">"무엇을 부탁해야 할지 모르겠다"는 순간에 씁니다. AI가 <b>한 번에 하나씩 질문</b>하고, 내 답을 모아 바로 쓸 수 있는 프롬프트를 완성해 줍니다. (모듈 2의 진단 폼 설계가 이 방식입니다.)</p>
-  <div class="prompt">
-    <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
-    <pre data-level="elem">너는 초등 교사를 돕는 '프롬프트 설계사'야.
-내가 [[예: 5학년 사회 수업에서 쓸 모둠 토의 활동지]]를 만들고 싶어.
-바로 만들지 말고, 좋은 결과가 나오도록 필요한 정보를 한 번에 하나씩 질문해 줘.
-(학년, 수업 목표, 활동 시간, 학생 수준, 원하는 형식 등)
-질문마다 답하기 쉬운 예시 3개를 곁들여 줘.
-질문이 끝나면, 내가 그대로 복사해 쓸 수 있는 '최종 프롬프트'를 코드블록 하나로 정리해 줘.</pre>
-    <pre data-level="mid">너는 중등 교과 교사를 돕는 '프롬프트 설계사'야.
-내가 [[예: 중2 과학 '물질의 상태 변화' 수업의 형성평가 문항]]을 만들고 싶어.
-바로 만들지 말고, 좋은 결과가 나오도록 필요한 정보를 한 번에 하나씩 질문해 줘.
-(성취기준, 평가 목적, 난이도 분포, 문항 유형, 채점 기준 등)
-질문마다 답하기 쉬운 예시 3개를 곁들여 줘.
-질문이 끝나면, 내가 그대로 복사해 쓸 수 있는 '최종 프롬프트'를 코드블록 하나로 정리해 줘.</pre>
-    <pre data-level="high">너는 고교 교사를 돕는 '프롬프트 설계사'야.
-내가 [[예: 고2 탐구 보고서 주제 선정 가이드와 루브릭]]을 만들고 싶어.
-바로 만들지 말고, 좋은 결과가 나오도록 필요한 정보를 한 번에 하나씩 질문해 줘.
-(교과·진로 연계, 탐구 기간, 평가 요소, 학생 수준, 산출물 형식 등)
-질문마다 답하기 쉬운 예시 3개를 곁들여 줘.
-질문이 끝나면, 내가 그대로 복사해 쓸 수 있는 '최종 프롬프트'를 코드블록 하나로 정리해 줘.</pre>
-  </div>
+  <div class="builder" data-b="meta"></div>
   <div class="tip"><b>TIP</b> 마지막에 나온 '최종 프롬프트'를 <b>새 대화창</b>에 붙여넣어 실행해 보세요. 질문 과정에서 쌓인 맥락 없이도 같은 결과가 나오면 좋은 프롬프트입니다.</div>
 
   <h2>② 리버스 프롬프트</h2>
   <p class="lead">좋은 샘플이 이미 있을 때 씁니다. 잘 만든 학습지·안내문·문항·이미지를 보여 주고 <b>"이걸 만들려면 어떤 프롬프트가 필요했을지"</b> 거꾸로 추정하게 합니다. 그 프롬프트의 [ ] 자리만 바꾸면 비슷한 품질의 새 자료를 계속 만들 수 있습니다.</p>
-  <div class="prompt">
-    <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
-    <pre>아래 [샘플]은 내가 마음에 들어 하는 결과물이야.
-이 결과물을 AI가 만들어 내려면 어떤 프롬프트가 필요했을지 거꾸로 추정해서 써 줘.
-
-[작성 조건]
-- 역할, 대상, 목적, 구성(항목·분량), 문체, 형식 제약을 각각 분리해 적을 것
-- 샘플마다 달라질 부분은 [대괄호]로 비워 둘 것
-- 추정한 근거(샘플의 어떤 특징을 보고 그렇게 판단했는지)를 한 줄씩 덧붙일 것
-- 샘플의 문장을 그대로 베끼는 지시는 넣지 말 것
-
-[샘플]
-[[여기에 결과물을 붙여넣거나 파일·이미지를 첨부]]</pre>
-  </div>
+  <div class="builder" data-b="reverse"></div>
   <div class="card">
     <h3 style="margin-top:0;">이런 샘플에 써 보세요</h3>
     <p data-level="elem"><span class="lane-tag elem">초등</span> 잘 만든 가정통신문, 알림장 문구, 활동지 한 장, 학급 마스코트 이미지(→ 이미지 프롬프트 추정).</p>
@@ -123,19 +94,7 @@
     <div class="step"><div class="n">2</div><div class="b"><h3>메타로 다듬기</h3><p>아래 프롬프트로 빠진 정보를 AI가 질문해 채우게 합니다.</p></div></div>
     <div class="step"><div class="n">3</div><div class="b"><h3>저장하고 재사용</h3><p>[ ] 자리만 바꿀 수 있는 형태로 문서에 모아 둡니다.</p></div></div>
   </div>
-  <div class="prompt">
-    <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
-    <pre>아래는 샘플 결과물에서 추정한 프롬프트 초안이야.
-이 초안을 '재사용 가능한 프롬프트'로 다듬고 싶어.
-
-1) 초안에서 부족하거나 모호한 부분을 먼저 3가지 짚어 줘.
-2) 그 부분을 채우기 위한 질문을 한 번에 하나씩 해 줘.
-3) 질문이 끝나면 [대괄호]로 바꿔 쓸 자리를 표시한 최종 프롬프트를 코드블록 하나로 줘.
-4) 마지막에 이 프롬프트를 쓸 때의 주의사항을 두 줄로 알려 줘.
-
-[프롬프트 초안]
-[[리버스 프롬프트로 얻은 내용을 붙여넣기]]</pre>
-  </div>
+  <div class="builder" data-b="combine"></div>
 
   <h2>좋은 프롬프트 점검표</h2>
   <div class="map">
@@ -164,6 +123,8 @@
   </div>
   <div class="foot">AI로 만드는 우리 수업 · 프롬프트 설계</div>
 </div>
-<script src="app.js"></script>
+<script src="app.js?v=20261108d"></script>
+<script src="builder-engine.js?v=20261108d"></script>
+<script src="builders.js?v=20261108d"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>모듈 3 · Gemini Notebook</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20261108d">
 </head>
 <body>
 <div class="wrap">
@@ -51,12 +51,7 @@
   <div class="step"><div class="n">2</div><div class="b">
     <h3>채팅 맞춤설정 — 교사 페르소나 심기</h3>
     <p>오른쪽 채팅 설정(⚙️)에서 <b>'맞춤'</b> 역할을 켜고 아래를 붙여넣습니다. 이후 모든 답이 내 학생 수준과 교육과정에 맞춰집니다.</p>
-    <div class="prompt">
-      <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
-      <pre data-level="elem">당신은 초등학교 담임 교사를 돕는 수업 설계 전문가입니다. 모든 답변은 2022 개정 교육과정 성취기준에 근거하여 작성하세요. 학생 수준은 초등학교 고학년이며, 어렵거나 생소한 용어는 쉽게 풀어서 설명하세요. 소스에 없는 내용을 추론할 경우 '추론'이라고 명시하고, 소스 내 근거를 반드시 함께 제시하세요.</pre>
-      <pre data-level="mid">당신은 중학교 교과 교사를 돕는 수업 설계 전문가입니다. 모든 답변은 2022 개정 교육과정 성취기준에 근거하여 작성하세요. 학생 수준은 중학생이며, 교과 개념은 정확하게 쓰되 예시로 풀어 설명하세요. 소스에 없는 내용을 추론할 경우 '추론'이라고 명시하고, 소스 내 근거를 반드시 함께 제시하세요.</pre>
-      <pre data-level="high">당신은 고등학교 교과 교사를 돕는 수업 설계 전문가입니다. 모든 답변은 2022 개정 교육과정 성취기준에 근거하여 작성하세요. 학생 수준은 고등학생이며, 학문적 개념과 사료를 정확히 다루되 탐구 질문을 함께 제시하세요. 소스에 없는 내용을 추론할 경우 '추론'이라고 명시하고, 소스 내 근거를 반드시 함께 제시하세요.</pre>
-    </div>
+    <div class="builder" data-b="m3persona"></div>
   </div></div>
 
   <div class="step"><div class="n">3</div><div class="b">
@@ -64,64 +59,23 @@
     <p>오른쪽 <b>스튜디오</b>에서 보고서·학습가이드·플래시카드·슬라이드·오디오 오버뷰를 만듭니다. 아래 프롬프트를 채팅창 또는 각 생성 창의 '설명'란에 붙여넣으세요.</p>
 
     <h3 style="margin-top:18px;">① 보고서 — 브리핑 문서로 요약</h3>
-    <div class="prompt">
-      <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
-      <pre data-level="elem">1. 업로드한 교과서 단원을 초등학교 고학년이 이해할 수 있는 쉬운 말로 정리해줘.
-2. 이 단원에서 꼭 알아야 할 핵심 내용 5가지를 한 문장씩 정리해줘.
-3. 마지막에 '오늘의 핵심 한 줄'로 단원 전체를 한 문장으로 요약해줘.
-각 내용에는 소스 내 출처를 함께 표시해줘.</pre>
-      <pre data-level="mid">1. 업로드한 단원을 중학생이 이해할 수 있는 말로 정리하되, 교과 핵심 개념은 정확한 용어로 써줘.
-2. 이 단원의 핵심 내용 6가지를 한 문장씩 정리하고, 각 내용에 소스 내 출처를 표시해줘.
-3. 수업 도입에 쓸 '핵심 질문' 3개를 만들어줘.</pre>
-      <pre data-level="high">1. 업로드한 사료·자료의 핵심 논지를 고등학생이 이해할 수 있게 정리하되, 학문적 정확성을 유지해줘.
-2. 핵심 내용 6가지를 한 문장씩 정리하고, 각 내용에 소스 내 출처(인용)를 표시해줘.
-3. 서로 다른 관점이 드러나는 부분이 있으면 대비해 보여주고, 탐구 질문 3개를 제시해줘.</pre>
-    </div>
+    <div class="builder" data-b="m3report"></div>
 
     <h3 style="margin-top:18px;">② 학습 가이드 — 복습 자료</h3>
-    <div class="prompt">
-      <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
-      <pre data-level="elem">학습 가이드를 만들어줘. 각 핵심 용어마다 초등학교 눈높이의 정의와 쉬운 예시 한 문장을 함께 넣어줘. 복습 퀴즈와 서술형 문항도 포함하고, 정답에는 소스 출처를 표시해줘.</pre>
-      <pre data-level="mid">학습 가이드를 만들어줘. 핵심 용어의 정의, 이해를 돕는 예시, 복습 퀴즈와 서술형 문항을 포함하고, 과정중심평가에 쓸 수 있도록 각 문항 옆에 평가 요소(무엇을 보는지)를 한 줄로 적어줘. 정답에는 소스 출처를 표시해줘.</pre>
-      <pre data-level="high">학습 가이드를 만들어줘. 핵심 개념 정의, 쟁점 정리, 사료 해석 연습 문항, 서술형 탐구 문항을 포함하고, 각 문항 옆에 채점 관점을 한 줄로 적어줘. 정답·근거에는 소스 출처(인용)를 표시해줘.</pre>
-    </div>
+    <div class="builder" data-b="m3guide"></div>
 
     <h3 style="margin-top:18px;">③ 플래시카드</h3>
-    <div class="prompt">
-      <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
-      <pre data-level="elem">업로드한 교과서 단원으로 초등학교 고학년 복습용 플래시카드 10장을 만들어줘.
-1. 각 시대(또는 주제)별로 대표적인 사건이나 인물을 정리해줘.
-2. 초등학생이 이해할 수 있는 쉬운 말로 써줘.
-3. 흐름을 알 수 있는 중요한 유물·유적에 대한 퀴즈도 만들어줘.</pre>
-      <pre data-level="mid">업로드한 단원으로 중학생 복습용 플래시카드 12장을 만들어줘.
-1. 핵심 개념·용어를 앞면, 정확한 설명을 뒷면에 써줘.
-2. 교과 용어는 정확히 쓰되 예시로 풀어줘.
-3. 서로 헷갈리기 쉬운 개념은 비교 카드로 만들어줘.</pre>
-      <pre data-level="high">업로드한 사료·자료로 고등학생 탐구용 플래시카드 12장을 만들어줘.
-1. 핵심 개념·사건을 앞면, 맥락과 의의를 뒷면에 써줘.
-2. 사료 해석에 필요한 배경지식을 포함해줘.
-3. 서로 다른 관점을 묻는 쟁점 카드도 2~3장 넣어줘.</pre>
-    </div>
+    <div class="builder" data-b="m3flash"></div>
 
     <h3 style="margin-top:18px;">④ 슬라이드 자료</h3>
-    <div class="prompt">
-      <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
-      <pre>교육자료 슬라이드를 다음 개요에 맞게 만들어줘.
-1. 스타일은 깔끔하고 세련되면서 약간의 귀여움을 더한 스타일.
-2. 텍스트는 크게 처리하고 이미지는 내용에 어울리게 매칭해줘.
-3. 우측 하단은 모든 슬라이드에서 동일한 단색으로 처리하고 슬라이드 번호를 넣어줘.
-내용은 업로드한 소스 범위 안에서만 구성하고, 지어내지 마.</pre>
-    </div>
+    <div class="builder" data-b="m3slide"></div>
     <div class="tip"><b>TIP</b> 오디오 오버뷰·동영상 개요·마인드맵도 같은 스튜디오에서 한 번에 만들 수 있어요. 학생이 여러 방식으로 같은 내용을 만나게 하는 멀티모달 전략입니다.</div>
   </div></div>
 
   <div class="step"><div class="n">4</div><div class="b">
     <h3>출처 검증 — 교사의 최종 점검 (가장 중요)</h3>
     <p>생성된 자료는 <b>초안</b>입니다. 채팅창에 질문을 입력하면 답변 옆에 <b>인용 번호</b>가 붙습니다. 번호를 클릭하면 원문의 해당 위치로 이동하니, 교사가 직접 사실관계를 확인하세요.</p>
-    <div class="prompt">
-      <button class="copy" onclick="copyPrompt(this)">📋 복사</button>
-      <pre>이 자료를 바탕으로, 학생들이 수업이 끝났을 때 꼭 대답할 수 있어야 하는 핵심 질문 3개를 만들어줘. 각 질문의 근거가 되는 소스 위치(인용)를 함께 표시해줘.</pre>
-    </div>
+    <div class="builder" data-b="m3verify"></div>
     <div class="note"><b>검증 체크</b> ① 학습가이드가 자료의 핵심을 정확히 담았나요? ② 그 내용이 내 수업 의도와 학생 수준에 맞나요? ③ 인용 번호를 눌러 원문과 대조했나요?</div>
   </div></div>
 
@@ -139,6 +93,8 @@
   </div>
   <div class="foot">AI로 만드는 우리 수업 · 모듈 3 Gemini Notebook</div>
 </div>
-<script src="app.js"></script>
+<script src="app.js?v=20261108d"></script>
+<script src="builder-engine.js?v=20261108d"></script>
+<script src="builders.js?v=20261108d"></script>
 </body>
 </html>
