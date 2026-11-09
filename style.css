@@ -263,3 +263,7 @@ body.hasb .wrap{max-width:1080px;}
 .qlist li{margin:.3em 0;}
 .qlist .qt{display:inline-block;font-size:.74rem;font-weight:700;color:var(--blue-d);background:var(--blue-l);border-radius:999px;padding:1px 8px;margin-left:4px;vertical-align:1px;}
 .qnote{margin:.6em 0 0;font-size:.9rem;color:var(--gray);}
+
+/* 흐름 내비게이션 (푸터 위) */
+.flow-nav{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;margin:26px 0 10px;padding:12px 14px;background:var(--bg-soft);border-radius:12px;font-size:.84rem;color:var(--gray);}
+.flow-nav b{color:var(--blue-d);background:var(--blue-l);border-radius:999px;padding:2px 10px;}

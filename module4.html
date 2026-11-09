@@ -3,20 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>모듈 4 · 안내 페이지</title>
-<link rel="stylesheet" href="style.css?v=20261109a">
+<title>STEP 4 · 내 교실 적용</title>
+<link rel="stylesheet" href="style.css?v=20261109b">
 </head>
 <body>
 <div class="wrap">
   <div class="mod-head">
-    <span class="pill">MODULE 4 · 안내</span>
+    <span class="pill">STEP 4 · 내 교실 적용</span>
     <span class="pill gray">약 15분</span>
   </div>
-  <h1>Canvas로 안내 페이지 만들기</h1>
-  <p class="lead">단원·활동 안내를 Gemini <b>Canvas</b>로 만든 모바일 웹페이지로 공유합니다. 가정통신문·단원 안내·동의 체크를 한 화면에 담아, 단톡방에 링크 하나로 전달합니다.</p>
+  <h1>🧒 STEP 4 · 내 교실에 적용하기</h1>
+  <p class="lead">지금까지 <b>교사 고민 설문 → 대시보드 → Notebook</b> 흐름을 경험했습니다. 이제 같은 흐름을 <b>내 교실</b>에 옮깁니다. ① 우리 반 학생 진단 폼을 만들고, ② 그 결과를 담은 안내 페이지를 Canvas로 만들어 가정·학생과 나눕니다.</p>
   <div class="map">
-    <b>역량</b> — 디지털 도구 활용 시범·공유(ISTE Leader 2.2.c)
+    <b>역량</b> — 교수·학습 방법 및 평가 설계 · 디지털 도구 활용 시범·공유(ISTE Leader 2.2.c)
   </div>
+
+<section class="track-sec">
+  <h2>① 우리 반 학생 진단 폼</h2>
+  <p class="lead">STEP 1에서 익힌 설문 방법을 그대로 내 교실에 옮깁니다. AI와 대화하며 빠진 항목 없는 진단·수요조사 구글 폼을 설계합니다.</p>
+  <h3>무엇을 진단하나요?</h3>
+  <div class="card">
+    <p data-level="elem"><span class="lane-tag elem">초등</span> 흥미·생활·학습 성향 진단 (좋아하는 활동, 어려워하는 과목, 모둠 선호 등).</p>
+    <p data-level="mid"><span class="lane-tag mid">중등</span> 교과 사전지식 진단 (단원 관련 선개념, 오개념, 자기평가).</p>
+    <p data-level="high"><span class="lane-tag high">고등</span> 진로·탐구주제 수요조사 (관심 주제, 탐구 경험, 희망 활동).</p>
+  </div>
+
+  <div class="ctx"><b>🧭 맥락 TIP</b> 진단 폼의 맥락은 <b>"왜 묻는가, 결과를 어디에 쓰는가"</b>입니다. 이 한 줄(예: "결과로 모둠을 편성할 거야")이 있으면 AI가 필요 없는 문항을 빼고 꼭 필요한 문항을 넣어 줍니다. 학급 인원과 응답에 쓸 시간도 알려 주세요.</div>
+
+  <h3>B-1 · 대화형으로 폼 설계하기</h3>
+  <p class="lead">Gemini에 아래를 붙여넣으면, AI가 <b>한 번에 하나씩</b> 질문하며 빠진 항목 없이 폼을 함께 설계해 줍니다.</p>
+  <div class="builder" data-b="m2chat"></div>
+
+  <div class="tip"><b>💡 TIP</b> 대화 중간에 헷갈리면 "지금까지 정리한 문항 목록을 먼저 보여 줘"라고 요청하세요. 방향을 바로잡기 쉽습니다.</div>
+
+  <h3>B-2 · 폼 사양 한 번에 받기</h3>
+  <p class="lead">대화가 번거롭다면, <b>왼쪽에서 고르는 것만으로</b> '구글 폼 양식 작성 도우미'에 붙여넣을 사양을 한 번에 받을 수 있습니다. 완성된 프롬프트를 Gemini에 붙여넣으세요.</p>
+  <div class="builder" data-b="m2"></div>
+  <div class="tip"><b>TIP</b> 구글 폼 → 우측 상단 <b>[양식 작성 도우미(AI)]</b>에 위 출력을 붙여넣으면 설문이 자동으로 만들어집니다. 응답 시트는 모듈 5 대시보드의 재료가 됩니다.</div>
+  <div class="note"><b>개인정보 유의</b> 지병·가정형편 등 민감정보는 설문으로 모으지 않습니다. 꼭 필요하면 "담임에게 개별로 알려 주세요" 안내 문구로 대체하세요.</div>
+
+  <div class="tip"><b>💡 TIP</b> <b>학생이 5분 안에 끝낼 분량</b>으로 줄이세요. 문항이 많으면 응답 품질이 떨어집니다.</div>
+  <div class="tip"><b>💡 TIP</b> <b>먼저 교사가 직접 제출</b>해 보세요. 어색한 문항과 선택지 오류가 바로 보입니다.</div>
+  <div class="tip"><b>💡 TIP</b> <b>응답 시트의 열 이름은 바꾸지 마세요.</b> 모듈 5 대시보드가 이 이름을 보고 데이터를 읽습니다.</div>
+  <div class="tip"><b>💡 TIP</b> <b>나중에 분석할 문항은 객관식·척도형</b>으로 만드세요. 서술형은 많을수록 정리하기 어렵습니다.</div>
+
+  </section>
+
+  <h2>② Canvas 안내 페이지</h2>
 
   <h2>무엇을 안내하나요?</h2>
   <div class="card">
@@ -43,10 +76,11 @@
     <p>이번 모듈에서 만든 <b>안내 페이지(Canvas) 링크와 프롬프트</b>를 와우아이디어스 워크스페이스에 정리해 두세요.</p>
     <a class="btn" href="https://www.wowideas.co.kr/bid_app/cwinfo.wowideas/share.workspace.php?prj_id=75OHPW&bc_code=sharews%3AM01001&bc_ctluser=d643396f-492c-4e06-ae36-0357eb003330" target="_blank" rel="noopener">🔗 와우아이디어스 열기</a>
   </div>
-  <div class="foot">GES 교실 BUG 해결 워크숍 · 모듈 4</div>
+  <div class="flow-nav"><span>STEP 1 설문</span> → <span>STEP 2 대시보드</span> → <span>STEP 3 Notebook</span> → <b>STEP 4 내 교실</b> → <span>마무리</span></div>
+  <div class="foot">GES 교실 BUG 해결 워크숍 · STEP 4</div>
 </div>
-<script src="app.js?v=20261109a"></script>
-<script src="builder-engine.js?v=20261109a"></script>
-<script src="builders.js?v=20261109a"></script>
+<script src="app.js?v=20261109b"></script>
+<script src="builder-engine.js?v=20261109b"></script>
+<script src="builders.js?v=20261109b"></script>
 </body>
 </html>
