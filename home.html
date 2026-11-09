@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>홈 · GES 교실 BUG 해결 워크숍</title>
-<link rel="stylesheet" href="style.css?v=20261108e">
+<link rel="stylesheet" href="style.css?v=20261109a">
 </head>
 <body>
 <div class="wrap">
@@ -27,18 +27,27 @@
     <p style="margin-top:14px;"><span class="lane-tag elem">초등</span><span class="lane-tag mid">중등</span><span class="lane-tag high">고등</span> — 상단 <b>학교급 토글</b>을 바꾸면 모든 모듈의 예시·프롬프트가 내 학교급에 맞게 바뀝니다.</p>
   </div>
 
+  <div class="lead-row">
+    <div class="instructor"><span class="ilabel">강사</span><b>정진아</b><span class="isub">GES 교실 BUG 해결 워크숍</span></div>
+    <a class="survey-mini" href="https://forms.gle/c3F2HAdHbyHX28X28" target="_blank" rel="noopener">📝 연수 사후설문 바로가기</a>
+  </div>
+
   <!-- GES 공식 접속 바로가기 (전면 배치) -->
   <div class="ges-banner">
     <div class="ges-txt">
       <div class="mod-head"><span class="pill">GES 공식 연수 바로가기</span></div>
       <h2 style="margin:.2em 0;">먼저, GES 연수에 접속하세요</h2>
       <p class="lead" style="margin-bottom:0;">이 교안은 GES(Google AI Educator Series)를 바탕으로 합니다. 아래 공식 사이트에서 세션을 수강하고, 디지털 배지는 GES 사이트에서 직접 취득하세요.</p>
+      <div class="code-box">
+        <div class="code-l"><span class="code-tag">⭐ 배지 받을 때 꼭!</span><span class="code-txt"><b>추천</b> 칸에 코드를 입력하세요</span></div>
+        <button type="button" class="code-val" onclick="(function(b){var t='JAKOR';function ok(){b.querySelector('small').textContent='✅ 복사됨';setTimeout(function(){b.querySelector('small').textContent='눌러서 복사';},1500);}if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok).catch(ok);}else{ok();}})(this)">JAKOR<small>눌러서 복사</small></button>
+      </div>
     </div>
     <div class="ges-links">
       <a class="btn" href="https://쌤.닷컴/26ges" target="_blank" rel="noopener">🔗 쌤.닷컴/26ges</a>
       <a class="btn ghost" href="https://educertifications.google/google-ai-educator-series" target="_blank" rel="noopener">🎓 GES 공식 인증 사이트</a>
       <a class="btn ghost" href="https://docs.google.com/presentation/d/17_g-7mhOejiCuQBrbJgubxRvysSCSnUCcSfvRGgtxKw/edit" target="_blank" rel="noopener">📑 GES 첫걸음 안내 슬라이드</a>
-      <small>educertifications.google/google-ai-educator-series</small>
+      <a class="btn ghost" href="https://edu.exceedlms.com/student/activity/1969380-google-ai-educator-series-training-resources" target="_blank" rel="noopener">📚 GES 자료모음집</a>
     </div>
   </div>
 
@@ -50,7 +59,7 @@
       <div><b>② 수업에 활용</b><br><small>수준별 자료·평가·탐구 설계</small></div>
       <div><b>③ 업무에 활용</b><br><small>행정·업무·교직생활 지원</small></div>
     </div>
-    <div class="note" style="margin-top:14px;">디지털 배지는 이 교안이 아니라 <b>GES 공식 사이트</b>에서 취득합니다. GES 세션 끝의 퀴즈는 3문항이며 <b>3문항을 모두 맞혀야(3/3)</b> 배지를 받고, 한 문항이라도 틀리면 다시 응시합니다. 이 교안은 배운 내용을 <b>수업 결과물로 만들어 보는 실습</b>에 집중합니다.</div>
+    <div class="note" style="margin-top:14px;">디지털 배지는 이 교안이 아니라 <b>GES 공식 사이트</b>에서 취득합니다. GES 세션 끝의 퀴즈는 3문항이며 <b>3문항을 모두 맞혀야(3/3)</b> 배지를 받고, 한 문항이라도 틀리면 다시 응시합니다. 배지를 받을 때 <b class="code-inline">추천 칸에 JAKOR</b>를 꼭 입력하세요. 이 교안은 배운 내용을 <b>수업 결과물로 만들어 보는 실습</b>에 집중합니다.</div>
   </div>
 
   <h2>오늘 만드는 5개 결과물 + 심화 1개</h2>
@@ -58,7 +67,7 @@
   <div class="grid c2">
     <div class="mcard" data-go="module0.html"><div class="num">기초 · 프롬프트</div><h3>🧭 맥락·메타·리버스 프롬프트</h3><p>맥락을 담아 쓰고, 프롬프트를 AI에게 만들게 하고, 결과물에서 거꾸로 뽑는 법</p></div>
     <div class="mcard" data-go="module1.html"><div class="num">MODULE 1 · 몰입</div><h3>🎨 수업 마스코트</h3><p>Gemini 이미지로 우리 반·우리 수업 캐릭터 만들기</p></div>
-    <div class="mcard" data-go="module2.html"><div class="num">MODULE 2 · 진단</div><h3>📋 학생 진단 폼</h3><p>메타프롬프트로 빠진 항목 없는 진단 설문 설계</p></div>
+    <div class="mcard" data-go="module2.html"><div class="num">MODULE 2 · 진단</div><h3>🔍 교실 BUG 찾기 설문</h3><p>AI와 교육의 본질에 대한 교사 고민 설문 + 우리 반 학생 진단</p></div>
     <div class="mcard" data-go="module3.html"><div class="num">MODULE 3 · 자료제작 ★</div><h3>📚 Gemini Notebook</h3><p>수준별 학습자료 + 출처검증 (GES 핵심)</p></div>
     <div class="mcard" data-go="module4.html"><div class="num">MODULE 4 · 안내</div><h3>✉️ 가정통신문 페이지</h3><p>Canvas로 모바일 안내 페이지 만들기</p></div>
     <div class="mcard" data-go="module5.html"><div class="num">MODULE 5 · 결정</div><h3>📊 의사결정 대시보드</h3><p>진단·평가 데이터를 실시간 차트로</p></div>
@@ -75,11 +84,16 @@
     <div class="ges-txt">
       <h2 style="margin:.2em 0;">당신의 역량을 인증할 준비가 되었나요?</h2>
       <p class="lead" style="margin-bottom:0;">이번에 배운 내용을 GES 공식 사이트에서 확인하고 디지털 배지를 취득하세요.</p>
+      <div class="code-box">
+        <div class="code-l"><span class="code-tag">⭐ 배지 받을 때 꼭!</span><span class="code-txt"><b>추천</b> 칸에 코드를 입력하세요</span></div>
+        <button type="button" class="code-val" onclick="(function(b){var t='JAKOR';function ok(){b.querySelector('small').textContent='✅ 복사됨';setTimeout(function(){b.querySelector('small').textContent='눌러서 복사';},1500);}if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok).catch(ok);}else{ok();}})(this)">JAKOR<small>눌러서 복사</small></button>
+      </div>
     </div>
     <div class="ges-links">
       <a class="btn" href="https://쌤.닷컴/26ges" target="_blank" rel="noopener">🔗 쌤.닷컴/26ges</a>
       <a class="btn ghost" href="https://educertifications.google/google-ai-educator-series" target="_blank" rel="noopener">🎓 GES 공식 인증 사이트</a>
       <a class="btn ghost" href="https://docs.google.com/presentation/d/17_g-7mhOejiCuQBrbJgubxRvysSCSnUCcSfvRGgtxKw/edit" target="_blank" rel="noopener">📑 GES 첫걸음 안내 슬라이드</a>
+      <a class="btn ghost" href="https://edu.exceedlms.com/student/activity/1969380-google-ai-educator-series-training-resources" target="_blank" rel="noopener">📚 GES 자료모음집</a>
     </div>
   </div>
 
@@ -89,10 +103,20 @@
     <a class="btn" href="https://www.wowideas.co.kr/bid_app/cwinfo.wowideas/share.workspace.php?prj_id=75OHPW&bc_code=sharews%3AM01001&bc_ctluser=d643396f-492c-4e06-ae36-0357eb003330" target="_blank" rel="noopener">🔗 와우아이디어스 열기</a>
   </div>
 
+  <div class="survey">
+    <div class="survey-txt">
+      <div class="survey-tag">연수생 필수 · 마지막 단계</div>
+      <h2>📝 연수 사후설문에 꼭 참여해 주세요</h2>
+      <p>오늘 연수가 어땠는지 알려 주세요. 여러분의 응답은 다음 연수를 더 좋게 만드는 데 쓰입니다.</p>
+      <p class="survey-who">강사명: <b>정진아</b> · GES 교실 BUG 해결 워크숍</p>
+    </div>
+    <a class="survey-btn" href="https://forms.gle/c3F2HAdHbyHX28X28" target="_blank" rel="noopener">사후설문 참여하기 →</a>
+  </div>
+
   <div class="foot">GES 교실 BUG 해결 워크숍 · 초·중·고 교사 연수 (GES 연계)</div>
 </div>
 
-<script src="app.js?v=20261108e"></script>
+<script src="app.js?v=20261109a"></script>
 <script>
   document.querySelectorAll('.mcard').forEach(function(c){
     c.addEventListener('click',function(){ try{ window.parent.postMessage({type:'goto',src:c.dataset.go},'*'); }catch(e){} });

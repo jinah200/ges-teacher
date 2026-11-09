@@ -3,22 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>모듈 2 · 학생 진단 폼</title>
-<link rel="stylesheet" href="style.css?v=20261108e">
+<title>모듈 2 · 교실 BUG 찾기 설문 · 학생 진단</title>
+<link rel="stylesheet" href="style.css?v=20261109a">
 </head>
 <body>
 <div class="wrap">
   <div class="mod-head">
     <span class="pill">MODULE 2 · 진단</span>
-    <span class="pill gray">약 15분</span>
+    <span class="pill gray">약 20분</span>
   </div>
-  <h1>학생 진단 폼 설계하기</h1>
-  <p class="lead">수업 설계의 출발은 '우리 학생이 지금 어디에 있는가'입니다. AI와 대화하며 빠진 항목 없는 진단·수요조사 구글 폼을 설계합니다. 여기서 모은 데이터는 모듈 5(대시보드)로 이어집니다.</p>
+  <h1>🔍 교실 BUG 찾기 — 설문과 진단</h1>
+  <p class="lead">수업 설계의 출발은 '지금 어디에 있는가'를 아는 것입니다. 이 모듈은 두 갈래로 진행합니다. 먼저 <b>선생님 자신의 고민</b>을 설문으로 꺼내 함께 나누고, 이어서 같은 방법으로 <b>우리 반 학생 진단</b>을 설계합니다. 여기서 모은 응답은 모듈 5 대시보드의 재료가 됩니다.</p>
   <div class="map">
-    <b>역량</b> — 교수·학습 방법 및 평가 설계
+    <b>역량</b> — AI·디지털 기술의 윤리적 활용 · 교수·학습 방법 및 평가 설계 · 교사 전문성 성찰
   </div>
 
-  <h2>무엇을 진단하나요?</h2>
+  <div class="tracks">
+    <a class="track a" href="#trackA">
+      <span class="tk">A · 기본 · 함께 응답</span>
+      <b>🧑‍🏫 교사 고민 설문</b>
+      <span>AI 활용에 대한 마음과 '교육의 본질'에 대한 고민을 모읍니다.</span>
+    </a>
+    <a class="track b" href="#trackB">
+      <span class="tk">B · 선택 · 내 교실 적용</span>
+      <b>🧒 우리 반 학생 진단</b>
+      <span>흥미·사전지식·진로 등 내 학생들의 출발점을 진단합니다.</span>
+    </a>
+  </div>
+
+  <!-- ───────── 갈래 A ───────── -->
+  <section id="trackA" class="track-sec">
+  <h2><span class="tbadge a">A</span> 교사 고민 설문 · '교실 BUG 찾기'</h2>
+  <p class="lead">지금 많은 선생님께 가장 큰 교실 BUG는 학급 데이터보다 <b>"AI를 써야 하나, 써도 되나"</b> 하는 마음의 걸림일지도 모릅니다. 이 설문은 AI 활용을 권하려는 것이 아니라, <b>무엇은 AI에 맡기고 무엇은 교사가 지킬 것인가</b>를 스스로 정리해 보는 질문입니다. 거부감도, 기대도 모두 정당한 응답입니다.</p>
+
+  <h3>설문의 네 가지 축</h3>
+  <div class="grid c2">
+    <div class="card"><b>① 지금의 마음</b><p style="margin:.35em 0 0;color:var(--gray);font-size:.94rem;">AI와 교육이라는 말 앞에서 드는 솔직한 감정 — 기대, 걱정, 피로감, 궁금함, 무관심</p></div>
+    <div class="card"><b>② 걸림의 이유</b><p style="margin:.35em 0 0;color:var(--gray);font-size:.94rem;">학생의 사고력, 정확성, 윤리·저작권, 업무 부담, 교사 역할 등 무엇이 가장 마음에 걸리는지</p></div>
+    <div class="card"><b>③ 지킬 것과 맡길 것</b><p style="margin:.35em 0 0;color:var(--gray);font-size:.94rem;">AI가 아무리 발전해도 교사가 해야 할 일, 그리고 AI에 맡겨도 괜찮은 일 — <b>연수의 핵심 질문</b></p></div>
+    <div class="card"><b>④ 오늘 풀고 싶은 BUG</b><p style="margin:.35em 0 0;color:var(--gray);font-size:.94rem;">이 연수에서 꼭 해결해 보고 싶은 교실 속 문제 한 가지</p></div>
+  </div>
+
+  <h3>문항 초안 (예시)</h3>
+  <div class="card qlist">
+    <ol>
+      <li><b>학교급</b> — 초등 / 중등 / 고등 / 기타 <span class="qt">객관식</span></li>
+      <li><b>지금 수업이나 업무에서 AI를 얼마나 쓰고 있나요?</b> — 거의 쓰지 않음 / 가끔 / 자주 <span class="qt">객관식</span></li>
+      <li><b>'AI와 교육'이라는 말을 들으면 어떤 마음이 드나요?</b> — 기대된다 / 걱정된다 / 피곤하다 / 궁금하다 / 잘 모르겠다 / 별 감흥 없다 <span class="qt">체크박스</span></li>
+      <li><b>AI 활용에서 가장 마음에 걸리는 점은?</b> (최대 2개) — 학생의 사고력·글쓰기 약화 / 정확성(틀린 정보) / 개인정보·저작권 / 익힐 시간 부족 / 교사 역할 축소 / 학교·학부모 인식 / 특별히 없음 <span class="qt">체크박스</span></li>
+      <li><b>"나는 AI 활용에 대한 내 생각을 정리했다"</b> — 1 전혀 아니다 ~ 5 매우 그렇다 <span class="qt">척도</span></li>
+      <li><b>AI가 아무리 발전해도 교사가 지켜야 할 일은?</b> (최대 3개) — 학생과의 관계·정서 돌봄 / 질문을 던지고 생각하게 하기 / 평가와 판단 / 공동체·가치 교육 / 수업 설계 / 개별 피드백 <span class="qt">체크박스</span></li>
+      <li><b>AI에 맡겨도 괜찮다고 느끼는 일은?</b> — 자료 초안 / 안내문 / 문항 초안 / 데이터 정리 / 수준별 자료 변형 / 행정 문서 / 아직 없음 <span class="qt">체크박스</span></li>
+      <li><b>내가 생각하는 '교육의 본질'을 한 문장으로 쓴다면?</b> <span class="qt">단답형</span></li>
+      <li><b>오늘 연수에서 풀고 싶은 교실 BUG 한 가지는?</b> <span class="qt">단답형</span></li>
+    </ol>
+    <p class="qnote">아래 선택 창에서 축과 분량을 고르면, 이 초안을 바탕으로 구글 폼 사양을 만들어 주는 프롬프트가 완성됩니다.</p>
+  </div>
+
+  <div class="ctx"><b>🧭 맥락 TIP</b> 설문 프롬프트에는 <b>"이 설문은 AI 활용을 권하려는 것이 아니다"</b>라는 맥락을 꼭 넣으세요. 이 한 줄이 있으면 AI가 "AI는 유용하다"로 기울어진 문항을 만들지 않고, 거부감도 정당한 선택지로 넣어 줍니다.</div>
+
+  <h3>A-1 · 교사 고민 설문 만들기</h3>
+  <p class="lead"><b>왼쪽에서 고르면</b> 구글 폼 [양식 작성 도우미]에 붙여넣을 사양을 만드는 프롬프트가 완성됩니다. 필요하면 직접 고친 뒤 복사해 Gemini에 붙여넣으세요.</p>
+  <div class="builder" data-b="m2teacher"></div>
+
+  <h3>A-2 · 연수장에서 이렇게 진행해요</h3>
+  <div class="card">
+    <div class="step"><div class="n">1</div><div class="b"><h3>강사가 설문을 하나 만들어 공유</h3><p>QR 코드나 짧은 링크로 연수생 모두에게 나눕니다. (연수생은 각자 A-1로 자기 학교용 설문을 따로 만들어 봐도 좋습니다.)</p></div></div>
+    <div class="step"><div class="n">2</div><div class="b"><h3>모두 익명으로 3~5분 응답</h3><p>정답이 없는 질문이라는 점을 먼저 말해 주세요. 솔직한 응답이 가장 좋은 데이터입니다.</p></div></div>
+    <div class="step"><div class="n">3</div><div class="b"><h3>모듈 5에서 대시보드로 함께 보기</h3><p>응답 시트를 대시보드로 띄우면 <b>"우리 연수장 선생님들의 고민 지도"</b>가 실시간으로 그려집니다. 서술형 응답은 Gemini로 주제별로 묶어 봅니다.</p></div></div>
+    <div class="step"><div class="n">4</div><div class="b"><h3>'지킬 것과 맡길 것'으로 짧게 나누기</h3><p>결과를 보며 "AI에 맡길 수 있는 것이 생기면, 그만큼 무엇에 더 시간을 쓰고 싶은가"를 이야기합니다. 이 답이 오늘 연수의 방향이 됩니다.</p></div></div>
+  </div>
+
+  <div class="tip"><b>💡 TIP</b> <b>익명으로, 이메일 수집 끔</b>으로 설정하세요. 구글 폼 설정에서 '이메일 주소 수집'을 '수집 안함'으로 두면 솔직한 응답이 늘어납니다.</div>
+  <div class="tip"><b>💡 TIP</b> 문항이 한쪽으로 기울지 않았는지 보려면 Gemini에 "이 문항들이 AI 활용을 좋게 보도록 유도하는 표현이 있는지 점검해 줘"라고 물어보세요.</div>
+  <div class="tip"><b>💡 TIP</b> 이 설문은 마지막의 <b>연수 사후설문</b>과 다릅니다. 이름을 '교실 BUG 찾기 설문'처럼 따로 붙여 헷갈리지 않게 하세요.</div>
+  <div class="tip"><b>💡 TIP</b> 연수 전후로 같은 문항 5번("내 생각을 정리했다")을 물어보면, 연수가 선생님들의 생각 정리에 어떤 도움이 되었는지 비교해 볼 수 있습니다.</div>
+  </section>
+
+  <!-- ───────── 갈래 B ───────── -->
+  <section id="trackB" class="track-sec">
+  <h2><span class="tbadge b">B</span> 우리 반 학생 진단 · 내 교실 적용</h2>
+  <p class="lead">갈래 A에서 익힌 방법을 그대로 내 교실에 옮깁니다. AI와 대화하며 빠진 항목 없는 진단·수요조사 구글 폼을 설계합니다.</p>
+  <h3>무엇을 진단하나요?</h3>
   <div class="card">
     <p data-level="elem"><span class="lane-tag elem">초등</span> 흥미·생활·학습 성향 진단 (좋아하는 활동, 어려워하는 과목, 모둠 선호 등).</p>
     <p data-level="mid"><span class="lane-tag mid">중등</span> 교과 사전지식 진단 (단원 관련 선개념, 오개념, 자기평가).</p>
@@ -27,13 +93,13 @@
 
   <div class="ctx"><b>🧭 맥락 TIP</b> 진단 폼의 맥락은 <b>"왜 묻는가, 결과를 어디에 쓰는가"</b>입니다. 이 한 줄(예: "결과로 모둠을 편성할 거야")이 있으면 AI가 필요 없는 문항을 빼고 꼭 필요한 문항을 넣어 줍니다. 학급 인원과 응답에 쓸 시간도 알려 주세요.</div>
 
-  <h2>실습 ① · 대화형으로 폼 설계하기</h2>
+  <h3>B-1 · 대화형으로 폼 설계하기</h3>
   <p class="lead">Gemini에 아래를 붙여넣으면, AI가 <b>한 번에 하나씩</b> 질문하며 빠진 항목 없이 폼을 함께 설계해 줍니다.</p>
   <div class="builder" data-b="m2chat"></div>
 
   <div class="tip"><b>💡 TIP</b> 대화 중간에 헷갈리면 "지금까지 정리한 문항 목록을 먼저 보여 줘"라고 요청하세요. 방향을 바로잡기 쉽습니다.</div>
 
-  <h2>실습 ② · 폼 사양 한 번에 받기</h2>
+  <h3>B-2 · 폼 사양 한 번에 받기</h3>
   <p class="lead">대화가 번거롭다면, <b>왼쪽에서 고르는 것만으로</b> '구글 폼 양식 작성 도우미'에 붙여넣을 사양을 한 번에 받을 수 있습니다. 완성된 프롬프트를 Gemini에 붙여넣으세요.</p>
   <div class="builder" data-b="m2"></div>
   <div class="tip"><b>TIP</b> 구글 폼 → 우측 상단 <b>[양식 작성 도우미(AI)]</b>에 위 출력을 붙여넣으면 설문이 자동으로 만들어집니다. 응답 시트는 모듈 5 대시보드의 재료가 됩니다.</div>
@@ -44,15 +110,17 @@
   <div class="tip"><b>💡 TIP</b> <b>응답 시트의 열 이름은 바꾸지 마세요.</b> 모듈 5 대시보드가 이 이름을 보고 데이터를 읽습니다.</div>
   <div class="tip"><b>💡 TIP</b> <b>나중에 분석할 문항은 객관식·척도형</b>으로 만드세요. 서술형은 많을수록 정리하기 어렵습니다.</div>
 
+  </section>
+
   <div class="wow">
     <h2>📤 내 결과물을 와우아이디어스에 옮기기</h2>
-    <p>이번 모듈에서 만든 <b>진단 폼 문항 목록과 폼 링크</b>를 와우아이디어스 워크스페이스에 정리해 두세요.</p>
+    <p>이번 모듈에서 만든 <b>교사 고민 설문·학생 진단 폼의 문항 목록과 폼 링크</b>를 와우아이디어스 워크스페이스에 정리해 두세요.</p>
     <a class="btn" href="https://www.wowideas.co.kr/bid_app/cwinfo.wowideas/share.workspace.php?prj_id=75OHPW&bc_code=sharews%3AM01001&bc_ctluser=d643396f-492c-4e06-ae36-0357eb003330" target="_blank" rel="noopener">🔗 와우아이디어스 열기</a>
   </div>
   <div class="foot">GES 교실 BUG 해결 워크숍 · 모듈 2</div>
 </div>
-<script src="app.js?v=20261108e"></script>
-<script src="builder-engine.js?v=20261108e"></script>
-<script src="builders.js?v=20261108e"></script>
+<script src="app.js?v=20261109a"></script>
+<script src="builder-engine.js?v=20261109a"></script>
+<script src="builders.js?v=20261109a"></script>
 </body>
 </html>

@@ -33,6 +33,8 @@
   .tab.active{background:#e8f0fe;color:var(--blue-d);}
   .acts{margin-left:auto;display:flex;gap:8px;align-items:center;}
   .tabs{order:5;flex-basis:100%;justify-content:flex-start;padding-top:2px;}
+  .sv-top{background:#d93025;color:#fff;text-decoration:none;font-weight:800;font-size:.84rem;padding:7px 14px;border-radius:999px;white-space:nowrap;}
+  .sv-top:hover{background:#b3261e;}
   .ges-top{background:#1a73e8;color:#fff;text-decoration:none;font-weight:700;
     font-size:.82rem;padding:7px 14px;border-radius:999px;white-space:nowrap;transition:.14s;}
   .ges-top:hover{background:#1967d2;}
@@ -59,22 +61,23 @@
     <button class="tab" data-src="prep.html">준비물</button>
     <button class="tab" data-src="module0.html">프롬프트<span class="s">맥락·메타·리버스</span></button>
     <button class="tab" data-src="module1.html">M1<span class="s">마스코트</span></button>
-    <button class="tab" data-src="module2.html">M2<span class="s">진단폼</span></button>
+    <button class="tab" data-src="module2.html">M2<span class="s">BUG 찾기 설문</span></button>
     <button class="tab" data-src="module3.html">M3<span class="s">Notebook</span></button>
     <button class="tab" data-src="module4.html">M4<span class="s">안내</span></button>
     <button class="tab" data-src="module5.html">M5<span class="s">대시보드</span></button>
     <button class="tab" data-src="module6.html">심화<span class="s">자동화·선택</span></button>
   </nav>
   <div class="acts">
+  <a class="sv-top" href="https://forms.gle/c3F2HAdHbyHX28X28" target="_blank" rel="noopener" title="연수생 사후설문 (강사: 정진아)">📝 사후설문</a>
   <a class="ges-top" href="https://쌤.닷컴/26ges" target="_blank" rel="noopener" title="GES 공식 연수 바로가기">🎓 GES 바로가기</a>
   <a class="wow-top" href="https://www.wowideas.co.kr/bid_app/cwinfo.wowideas/share.workspace.php?prj_id=75OHPW&bc_code=sharews%3AM01001&bc_ctluser=d643396f-492c-4e06-ae36-0357eb003330" target="_blank" rel="noopener" title="와우아이디어스에 결과물 옮기기">📤 와우아이디어스</a>
   </div>
 </header>
-<div class="stage"><iframe id="frame" src="home.html?v=20261108e" title="연수 교안"></iframe></div>
+<div class="stage"><iframe id="frame" src="home.html?v=20261109a" title="연수 교안"></iframe></div>
 
 <script>
 (function(){
-  var frame=document.getElementById('frame'); var VER='20261108e'; function U(s){ return s+'?v='+VER; }
+  var frame=document.getElementById('frame'); var VER='20261109a'; function U(s){ return s+'?v='+VER; }
   var tabs=[].slice.call(document.querySelectorAll('.tab'));
   var levelBtns=[].slice.call(document.querySelectorAll('#levels button'));
 

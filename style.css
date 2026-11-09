@@ -216,3 +216,50 @@ body.hasb .wrap{max-width:1080px;}
 .bugflow .bf b{color:var(--navy);font-size:.95rem;}
 .bugflow i{font-style:normal;color:var(--gray);}
 @media(max-width:600px){.hero .hero-title{font-size:1.85rem;}.bugflow i{display:none;}}
+
+/* 강사·사후설문 */
+.lead-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:0 0 18px;}
+.instructor{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#fff;border:1px solid var(--line-l);border-radius:14px;padding:10px 16px;}
+.instructor .ilabel{font-size:.78rem;font-weight:800;color:var(--blue-d);background:var(--blue-l);border-radius:999px;padding:2px 10px;}
+.instructor b{font-size:1.08rem;}
+.instructor .isub{font-size:.85rem;color:var(--gray);}
+.survey-mini{background:#fce8e6;color:#b3261e;text-decoration:none;font-weight:800;border-radius:12px;padding:11px 16px;border:1.5px solid #f4b4ae;}
+.survey-mini:hover{background:#fad2cf;}
+.survey{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin:30px 0 10px;background:linear-gradient(135deg,#d93025,#e8710a);color:#fff;border-radius:20px;padding:26px 28px;box-shadow:0 6px 18px rgba(217,48,37,.25);}
+.survey-txt{flex:1 1 380px;}
+.survey-tag{display:inline-block;background:rgba(255,255,255,.22);border-radius:999px;padding:4px 12px;font-size:.8rem;font-weight:800;}
+.survey h2{margin:.35em 0 .3em;color:#fff;font-size:1.5rem;}
+.survey p{margin:.2em 0;line-height:1.6;}
+.survey-who{opacity:.95;font-size:.95rem;}
+.survey-btn{flex:none;background:#fff;color:#c5221f;text-decoration:none;font-weight:900;font-size:1.1rem;padding:15px 26px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.survey-btn:hover{background:#fff4f2;}
+
+/* 배지 추천 코드 JAKOR */
+.code-box{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px;background:#fff8d6;border:2.5px solid #fbbc04;border-radius:16px;padding:12px 14px 12px 16px;color:#3c2f00;box-shadow:0 3px 10px rgba(0,0,0,.12);}
+.code-l{display:flex;flex-direction:column;gap:4px;}
+.code-tag{align-self:flex-start;background:#d93025;color:#fff;font-weight:900;font-size:.8rem;border-radius:999px;padding:3px 11px;}
+.code-txt{font-size:1.02rem;}
+.code-val{display:flex;flex-direction:column;align-items:center;cursor:pointer;background:#202124;color:#fde293;border:none;border-radius:12px;padding:8px 20px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.7rem;font-weight:900;letter-spacing:.14em;line-height:1.1;}
+.code-val small{font-family:var(--font);font-size:.7rem;letter-spacing:0;color:#e8eaed;font-weight:600;margin-top:3px;}
+.code-val:hover{background:#3c4043;}
+.code-inline{background:#fff1b8;border-radius:6px;padding:0 5px;color:#7a5900;}
+
+/* M2 두 갈래 */
+.tracks{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 6px;}
+@media(max-width:640px){.tracks{grid-template-columns:1fr;}}
+.track{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--navy);border-radius:16px;padding:18px 20px;border:2px solid;}
+.track.a{background:#e8f0fe;border-color:#1a73e8;}
+.track.b{background:#fff;border-color:var(--line);}
+.track:hover{box-shadow:0 4px 12px rgba(60,64,67,.15);}
+.track .tk{font-size:.8rem;font-weight:800;color:var(--blue-d);}
+.track.b .tk{color:var(--gray);}
+.track b{font-size:1.15rem;}
+.track span:last-child{font-size:.92rem;color:var(--gray);line-height:1.5;}
+.track-sec{margin-top:28px;padding-top:6px;scroll-margin-top:12px;}
+#trackB{border-top:2px dashed var(--line);padding-top:22px;}
+.tbadge{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;color:#fff;font-size:1rem;margin-right:6px;vertical-align:2px;}
+.tbadge.a{background:#1a73e8;}.tbadge.b{background:#80868b;}
+.qlist ol{margin:.2em 0 .4em 1.2em;padding:0;line-height:1.75;}
+.qlist li{margin:.3em 0;}
+.qlist .qt{display:inline-block;font-size:.74rem;font-weight:700;color:var(--blue-d);background:var(--blue-l);border-radius:999px;padding:1px 8px;margin-left:4px;vertical-align:1px;}
+.qnote{margin:.6em 0 0;font-size:.9rem;color:var(--gray);}
