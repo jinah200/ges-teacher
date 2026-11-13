@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>홈 · GES 교실 BUG 해결 워크숍</title>
-<link rel="stylesheet" href="style.css?v=20261109c">
+<link rel="stylesheet" href="style.css?v=20261113a">
 </head>
 <body>
 <div class="wrap">
@@ -101,7 +101,7 @@
     <div class="mcard" data-go="module5.html"><div class="num">STEP 2 · 대시보드</div><h3>📊 Canvas 대시보드</h3><p>설문 응답을 '고민 지도'로 한눈에 (쉬운 길/실시간 길)</p></div>
     <div class="mcard" data-go="module3.html"><div class="num">STEP 3 · 정리 ★</div><h3>📚 Gemini Notebook</h3><p>대시보드 결과와 자료로 고민 보고서·원칙 카드</p></div>
     <div class="mcard" data-go="module4.html"><div class="num">STEP 4 · 적용</div><h3>🧒 내 교실 적용</h3><p>같은 흐름을 학생 진단 폼 + 안내 페이지로</p></div>
-    <div class="mcard" data-go="module7.html"><div class="num">마무리</div><h3>🚀 BUG 해결사 · 나누기</h3><p>캐릭터 변신, 와우아이디어스 공유, 사후설문</p></div>
+    <div class="mcard" data-go="module7.html"><div class="num">마무리</div><h3>🚀 BUG 해결사 · 나누기</h3><p>캐릭터 변신, 나눔 보드 공유, 사후설문</p></div>
     <div class="mcard" data-go="module6.html"><div class="num">심화 · 선택</div><h3>🤖 업무 자동화</h3><p>폼 제출 → 피드백·기록·엽서 자동 발송</p></div>
   </div>
 
@@ -129,9 +129,9 @@
   </div>
 
   <div class="wow">
-    <h2>📤 완성한 결과물은 와우아이디어스로</h2>
-    <p>각 모듈에서 만든 결과물을 와우아이디어스 워크스페이스에 모아 두세요.</p>
-    <a class="btn" href="https://www.wowideas.co.kr/bid_app/cwinfo.wowideas/share.workspace.php?prj_id=75OHPW&bc_code=sharews%3AM01001&bc_ctluser=d643396f-492c-4e06-ae36-0357eb003330" target="_blank" rel="noopener">🔗 와우아이디어스 열기</a>
+    <h2>📤 완성한 결과물은 나눔 보드로</h2>
+    <p>각 모듈에서 만든 결과물을 나눔 보드에 올려 함께 나눠 보세요.</p>
+    <a class="btn" href="board.html" target="_blank" rel="noopener">🧩 나눔 보드 열기</a>
   </div>
 
   <div class="survey">
@@ -147,7 +147,7 @@
   <div class="foot">GES 교실 BUG 해결 워크숍 · 초·중·고 교사 연수 (GES 연계)</div>
 </div>
 
-<script src="app.js?v=20261109c"></script>
+<script src="app.js?v=20261113a"></script>
 <script>
   document.querySelectorAll('.mcard').forEach(function(c){
     c.addEventListener('click',function(){ try{ window.parent.postMessage({type:'goto',src:c.dataset.go},'*'); }catch(e){} });

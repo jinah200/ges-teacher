@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧩 우리 연수장 나눔 보드 (데모)</title>
+<style>
+:root{
+  --blue:#1a73e8; --blue-d:#174ea6; --navy:#202124; --gray:#5f6368;
+  --line:#dadce0; --line-l:#e8eaed; --bg:#f6f8fc; --soft:#eef3fb;
+  --font:'Pretendard','Noto Sans KR',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--navy);font-family:var(--font);line-height:1.6;}
+.wrap{max-width:1040px;margin:0 auto;padding:22px 18px 60px;}
+header.top{text-align:center;margin-bottom:18px;}
+header.top h1{margin:.1em 0;font-size:1.9rem;}
+header.top p{margin:.2em 0;color:var(--gray);}
+.mode{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:700;border-radius:999px;padding:4px 12px;margin-top:6px;}
+.mode.demo{background:#fff4d6;color:#8a6100;}
+.mode.live{background:#e6f4ea;color:#1e8e3e;}
+
+/* 작성 카드 */
+.compose{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:18px;margin-bottom:18px;box-shadow:0 2px 8px rgba(60,64,67,.06);}
+.compose h2{margin:0 0 12px;font-size:1.1rem;}
+.compose h2 .editing{font-size:.8rem;color:#c5221f;font-weight:700;margin-left:8px;}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+.cats{display:flex;gap:8px;flex-wrap:wrap;}
+.cat{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-size:.9rem;cursor:pointer;font-family:inherit;color:var(--navy);}
+.cat:hover{border-color:var(--blue);}
+.cat.on{color:#1b1b1b;font-weight:700;border-color:transparent;}
+input,textarea{font-family:inherit;font-size:1rem;border:1.5px solid var(--line);border-radius:12px;padding:10px 13px;width:100%;background:#fcfdff;}
+input:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--soft);}
+textarea{resize:vertical;min-height:84px;}
+.nick{max-width:240px;}
+.ar{align-items:center;}
+.ar input{flex:1;min-width:200px;}
+.uploadbtn{flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--soft);color:var(--blue-d);border:1.5px solid var(--line);border-radius:12px;padding:10px 15px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.uploadbtn:hover{border-color:var(--blue);}
+.preview{display:none;margin-bottom:10px;position:relative;max-width:260px;}
+.preview.on{display:block;}
+.preview img{width:100%;border-radius:12px;border:1px solid var(--line);}
+.preview .rm{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:999px;width:26px;height:26px;cursor:pointer;font-size:1rem;line-height:1;}
+.compose .send{background:var(--blue);color:#fff;border:none;border-radius:12px;padding:12px 22px;font-weight:800;font-size:1rem;cursor:pointer;font-family:inherit;}
+.compose .send:hover{background:var(--blue-d);}
+.compose .cancel{background:#fff;color:var(--gray);border:1.5px solid var(--line);border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;font-family:inherit;}
+.hint{font-size:.82rem;color:var(--gray);}
+
+/* 필터 */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 16px;align-items:center;}
+.filters .fl{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 13px;font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--navy);}
+.filters .fl.on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:700;}
+.count{margin-left:auto;font-size:.85rem;color:var(--gray);}
+
+/* 보드 */
+.board{columns:3 260px;column-gap:14px;}
+@media(max-width:680px){.board{columns:1;}}
+.note{break-inside:avoid;margin:0 0 14px;border-radius:16px;padding:15px 16px;color:#1b1b1b;box-shadow:0 2px 6px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.05);animation:pop .25s ease;}
+@keyframes pop{from{transform:scale(.96);opacity:0;}to{transform:scale(1);opacity:1;}}
+.note .nhead{display:flex;align-items:center;gap:6px;margin-bottom:7px;}
+.note .ntag{font-size:.74rem;font-weight:800;background:rgba(255,255,255,.65);border-radius:999px;padding:2px 9px;}
+.note .ntime{margin-left:auto;font-size:.72rem;color:#00000088;}
+.note .ntext{white-space:pre-wrap;word-break:break-word;margin:2px 0 10px;font-size:.98rem;}
+.note img.pic{width:100%;border-radius:10px;margin:2px 0 10px;display:block;}
+.note a.lk{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:7px 11px;margin:0 0 10px;font-size:.88rem;font-weight:700;color:#174ea6;text-decoration:none;word-break:break-all;}
+.note a.lk:hover{background:#fff;}
+.note .nfoot{display:flex;align-items:center;gap:8px;}
+.note .who{font-size:.82rem;font-weight:700;color:#00000099;}
+.note .edited{font-size:.7rem;color:#00000066;}
+.note .act{margin-left:auto;display:flex;gap:6px;align-items:center;}
+.note .like{background:rgba(255,255,255,.6);border:none;border-radius:999px;padding:5px 11px;font-size:.84rem;font-weight:700;cursor:pointer;font-family:inherit;color:#c5221f;}
+.note .like:hover{background:rgba(255,255,255,.9);}
+.note .mini{background:none;border:none;color:#00000077;cursor:pointer;font-size:.8rem;font-family:inherit;padding:2px 4px;}
+.note .mini:hover{color:#000;text-decoration:underline;}
+.empty{text-align:center;color:var(--gray);padding:40px 0;}
+
+/* 설정(실시간 연결) */
+.gear{margin:26px 0 0;}
+.gear summary{cursor:pointer;font-weight:700;color:var(--blue-d);list-style:none;}
+.gear summary::-webkit-details-marker{display:none;}
+.gearbox{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:18px;margin-top:10px;}
+.gearbox h3{margin:.2em 0 .5em;}
+.gearbox code{font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre.code{background:#1b2238;color:#eef0fa;border-radius:12px;padding:14px;overflow:auto;font-size:.8rem;line-height:1.55;font-family:ui-monospace,Menlo,Consolas,monospace;}
+.gearbox .urlrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;}
+.gearbox .urlrow input{flex:1;min-width:220px;}
+.gearbox .save{background:#1e8e3e;color:#fff;border:none;border-radius:12px;padding:10px 18px;font-weight:700;cursor:pointer;font-family:inherit;}
+.foot{text-align:center;color:var(--gray);font-size:.85rem;margin-top:30px;}
+.warn{background:#fff8e1;border:1px solid #f9d77e;color:#7a5900;border-radius:12px;padding:10px 14px;font-size:.88rem;margin-top:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>🧩 우리 연수장 나눔 보드</h1>
+    <p>오늘의 교실 BUG, 해결 아이디어, 궁금한 점을 함께 나눠요.</p>
+    <span id="modeBadge" class="mode demo">● 데모 모드 · 이 브라우저에만 저장됨</span>
+  </header>
+
+  <!-- 글쓰기 -->
+  <div class="compose">
+    <h2>✏️ 새 글 올리기<span class="editing" id="editLabel" style="display:none;">· 글 수정 중</span></h2>
+    <div class="row">
+      <input class="nick" id="nick" type="text" placeholder="닉네임 (선택) 예: 3학년 김쌤" maxlength="20">
+    </div>
+    <div class="row cats" id="cats"></div>
+    <div class="row"><textarea id="content" placeholder="나누고 싶은 이야기를 적어 주세요. (최대 300자)" maxlength="300"></textarea></div>
+    <div class="row ar">
+      <input id="img" type="url" placeholder="🖼 이미지 주소(URL) 붙여넣기 (선택)">
+      <label class="uploadbtn">📤 이미지 업로드<input id="file" type="file" accept="image/*" hidden></label>
+    </div>
+    <div class="preview" id="preview"><button class="rm" id="rmImg" title="이미지 빼기">×</button><img id="previewImg" alt=""></div>
+    <div class="row"><input id="link" type="url" placeholder="🔗 링크 주소 (웹앱·사이트·대시보드 URL, 선택)"></div>
+    <div class="row"><input id="linktext" class="nick" type="text" placeholder="링크에 보일 이름 (선택) 예: 내 대시보드 열기" maxlength="30"></div>
+    <div class="row" style="align-items:center;">
+      <button class="send" id="send">📌 보드에 올리기</button>
+      <button class="cancel" id="cancel" style="display:none;">취소</button>
+      <span class="hint">개인정보(학생 이름·사진)는 올리지 마세요. 익명 나눔입니다.</span>
+    </div>
+  </div>
+
+  <!-- 필터 -->
+  <div class="filters" id="filters"></div>
+
+  <!-- 보드 -->
+  <div class="board" id="board"></div>
+
+  <!-- 실시간 연결 -->
+  <details class="gear">
+    <summary>⚙️ 실시간 공유 보드로 바꾸기 (Apps Script 연결)</summary>
+    <div class="gearbox">
+      <p>지금은 <b>데모 모드</b>라 글이 내 브라우저에만 저장됩니다. 아래 코드를 Apps Script 웹 앱으로 배포하고 그 주소를 넣으면, <b>모두가 같은 보드를 함께</b> 쓰게 됩니다.</p>
+      <h3>1. 새 구글 스프레드시트 → 확장 프로그램 → Apps Script에 붙여넣기</h3>
+      <pre class="code" id="gasCode"></pre>
+      <h3>2. 배포 → 새 배포 → 웹 앱 (액세스: 모든 사용자) → URL 복사</h3>
+      <h3>3. 아래에 웹 앱 URL 붙여넣기</h3>
+      <div class="urlrow">
+        <input id="apiUrl" type="url" placeholder="https://script.google.com/macros/s/..../exec">
+        <button class="save" id="saveUrl">연결하고 새로고침</button>
+      </div>
+      <div class="warn">⚠️ 공개 보드는 누구나 글을 쓸 수 있습니다. 연수·수업용은 <b>익명·검토 후 공개</b>를 권합니다. 코드의 <code>APPROVE_FIRST</code>를 <code>true</code>로 두면 교사가 시트에서 승인한 글만 보입니다. · 실시간 공유에서는 <b>업로드 이미지보다 이미지 주소(URL)</b>를 권합니다(시트 용량 제한).</div>
+    </div>
+  </details>
+
+  <div class="foot">GES 교실 BUG 해결 워크숍 · 나눔 보드 데모</div>
+</div>
+
+<script>
+/* ===== 설정 ===== */
+var CATS=[
+  {k:'bug',   label:'🐞 오늘의 BUG', color:'#ffe0e0'},
+  {k:'idea',  label:'💡 해결 아이디어', color:'#fff3c4'},
+  {k:'ask',   label:'❓ 궁금한 점', color:'#dbeeff'},
+  {k:'brag',  label:'🎉 자랑하기', color:'#e3f7e8'}
+];
+var LS_POSTS='board_demo_posts', LS_LIKES='board_demo_likes', LS_URL='board_api_url';
+var API_URL=(localStorage.getItem(LS_URL)||'').trim();
+var selCat='bug', filter='all', myLikes={}, editingId=null, uploadData='';
+try{ myLikes=JSON.parse(localStorage.getItem(LS_LIKES)||'{}'); }catch(e){ myLikes={}; }
+
+function catOf(k){ for(var i=0;i<CATS.length;i++) if(CATS[i].k===k) return CATS[i]; return CATS[0]; }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function ago(ts){ var d=(Date.now()-ts)/1000; if(d<60)return'방금'; if(d<3600)return Math.floor(d/60)+'분 전'; if(d<86400)return Math.floor(d/3600)+'시간 전'; return Math.floor(d/86400)+'일 전'; }
+function safeUrl(u){ u=String(u||'').trim(); return /^https?:\/\//i.test(u)?u:''; }
+
+/* ===== 저장소 ===== */
+function seedPosts(){
+  var now=Date.now();
+  return [
+    {id:uid(),cat:'bug', nick:'3학년 김쌤', text:'받아쓰기 채점에 매번 30분씩 걸려요. 더 빠른 방법 없을까요?', img:'',link:'',linktext:'', likes:5, ts:now-3600e3*5},
+    {id:uid(),cat:'idea',nick:'과학 박쌤', text:'구글 폼으로 받아쓰기 → 자동 채점으로 바꿨더니 10분으로 줄었어요! 대시보드도 만들었어요.', img:'',link:'https://example.com',linktext:'내 받아쓰기 대시보드 열기', likes:9, ts:now-3600e3*4},
+    {id:uid(),cat:'ask', nick:'', text:'Notebook에 교과서 PDF를 올려도 되나요? 저작권이 궁금합니다.', img:'',link:'',linktext:'', likes:3, ts:now-3600e3*3},
+    {id:uid(),cat:'brag',nick:'1학년 이쌤', text:'마스코트로 우리 반 안내문을 만들었더니 아이들이 너무 좋아해요. 종이도 아끼고요!', img:'',link:'',linktext:'', likes:12, ts:now-3600e3*2},
+    {id:uid(),cat:'bug', nick:'', text:'모둠 편성이 늘 고민이에요. 공정하게 섞는 게 어렵네요.', img:'',link:'',linktext:'', likes:4, ts:now-3600e3*1},
+    {id:uid(),cat:'idea',nick:'중등 최쌤', text:'설문으로 관심사 받아서 Gemini한테 모둠 짜달라고 했더니 금방 끝났어요.', img:'',link:'',linktext:'', likes:7, ts:now-60e3*30}
+  ];
+}
+function loadLocal(){ try{ var p=JSON.parse(localStorage.getItem(LS_POSTS)); if(p&&p.length) return p; }catch(e){} var s=seedPosts(); saveLocal(s); return s; }
+function saveLocal(p){ try{ localStorage.setItem(LS_POSTS,JSON.stringify(p)); return true; }catch(e){ alert('저장 공간이 가득 찼어요. 업로드 이미지는 용량이 커서, 이미지 주소(URL)를 쓰거나 글을 좀 지워 주세요.'); return false; } }
+
+function getPosts(cb){
+  if(API_URL){
+    fetch(API_URL+'?t='+Date.now()).then(function(r){return r.json();}).then(function(d){ cb((d&&d.posts)||[]); }).catch(function(){ cb(loadLocal()); showError(); });
+  } else cb(loadLocal());
+}
+function apiPost(params,cb){
+  var body=new URLSearchParams(); for(var k in params) body.set(k,params[k]==null?'':params[k]);
+  fetch(API_URL,{method:'POST',body:body}).then(function(){ setTimeout(cb||function(){},400); }).catch(function(){ (cb||function(){})(); });
+}
+function addPost(post,cb){
+  if(API_URL){ apiPost({cat:post.cat,nick:post.nick,text:post.text,img:post.img,link:post.link,linktext:post.linktext},cb); }
+  else { var all=loadLocal(); all.unshift(post); saveLocal(all); cb(); }
+}
+function updatePost(post,cb){
+  if(API_URL){ apiPost({edit:post.id,cat:post.cat,nick:post.nick,text:post.text,img:post.img,link:post.link,linktext:post.linktext},cb); }
+  else { var all=loadLocal(); for(var i=0;i<all.length;i++) if(all[i].id===post.id){ all[i].cat=post.cat;all[i].nick=post.nick;all[i].text=post.text;all[i].img=post.img;all[i].link=post.link;all[i].linktext=post.linktext;all[i].edited=Date.now(); break; } saveLocal(all); cb(); }
+}
+function likePost(id){
+  if(myLikes[id]) return false;
+  myLikes[id]=1; localStorage.setItem(LS_LIKES,JSON.stringify(myLikes));
+  if(API_URL){ apiPost({like:id}); }
+  else { var all=loadLocal(); for(var i=0;i<all.length;i++) if(all[i].id===id){ all[i].likes=(all[i].likes||0)+1; break; } saveLocal(all); }
+  return true;
+}
+function delPost(id){
+  if(API_URL){ apiPost({del:id},render); return; }
+  var all=loadLocal().filter(function(p){return p.id!==id;}); saveLocal(all); render();
+}
+function getPost(id,cb){ getPosts(function(ps){ for(var i=0;i<ps.length;i++) if(ps[i].id===id){ cb(ps[i]); return; } cb(null); }); }
+function showError(){ var b=document.getElementById('modeBadge'); b.textContent='● 연결 오류 · 데모 데이터 표시 중'; b.className='mode demo'; }
+
+/* ===== 렌더 ===== */
+function render(){
+  getPosts(function(posts){
+    posts=posts.slice().sort(function(a,b){return b.ts-a.ts;});
+    var board=document.getElementById('board');
+    var list=filter==='all'?posts:posts.filter(function(p){return p.cat===filter;});
+    if(!list.length){ board.innerHTML='<div class="empty">아직 글이 없어요. 첫 글을 올려 보세요!</div>'; updateCount(posts.length); return; }
+    board.innerHTML=list.map(function(p){
+      var c=catOf(p.cat), liked=myLikes[p.id], lk=safeUrl(p.link);
+      return '<div class="note" style="background:'+c.color+'">'+
+        '<div class="nhead"><span class="ntag">'+c.label+'</span><span class="ntime">'+ago(p.ts)+(p.edited?' · 수정됨':'')+'</span></div>'+
+        '<div class="ntext">'+esc(p.text)+'</div>'+
+        (p.img?'<img class="pic" src="'+esc(p.img)+'" alt="" onerror="this.style.display=\'none\'">':'')+
+        (lk?'<a class="lk" href="'+esc(lk)+'" target="_blank" rel="noopener">🔗 '+esc(p.linktext||lk)+'</a>':'')+
+        '<div class="nfoot"><span class="who">'+(p.nick?esc(p.nick):'익명')+'</span>'+
+        '<span class="act">'+
+          '<button class="mini" data-edit="'+p.id+'">수정</button>'+
+          '<button class="mini" data-del="'+p.id+'">삭제</button>'+
+          '<button class="like" data-like="'+p.id+'"'+(liked?' disabled':'')+'>♥ '+(p.likes||0)+'</button>'+
+        '</span></div>'+
+      '</div>';
+    }).join('');
+    updateCount(posts.length);
+  });
+}
+function updateCount(n){ var el=document.querySelector('.count'); if(el) el.textContent='전체 '+n+'개'; }
+
+/* ===== 이미지 업로드(축소) & 미리보기 ===== */
+function setPreview(src){
+  var pv=document.getElementById('preview');
+  if(src){ document.getElementById('previewImg').src=src; pv.classList.add('on'); }
+  else { pv.classList.remove('on'); document.getElementById('previewImg').src=''; }
+}
+document.getElementById('file').addEventListener('change',function(){
+  var f=this.files&&this.files[0]; if(!f) return;
+  var rd=new FileReader();
+  rd.onload=function(ev){
+    var img=new Image();
+    img.onload=function(){
+      var max=1000, w=img.width, h=img.height;
+      if(w>max||h>max){ if(w>h){ h=Math.round(h*max/w); w=max; } else { w=Math.round(w*max/h); h=max; } }
+      var cv=document.createElement('canvas'); cv.width=w; cv.height=h;
+      cv.getContext('2d').drawImage(img,0,0,w,h);
+      uploadData=cv.toDataURL('image/jpeg',0.82);
+      document.getElementById('img').value=''; // 업로드 쓰면 URL 비움
+      setPreview(uploadData);
+    };
+    img.src=ev.target.result;
+  };
+  rd.readAsDataURL(f);
+  this.value='';
+});
+document.getElementById('img').addEventListener('input',function(){
+  var u=safeUrl(this.value); if(u){ uploadData=''; setPreview(u); } else if(!uploadData){ setPreview(''); }
+});
+document.getElementById('rmImg').addEventListener('click',function(){ uploadData=''; document.getElementById('img').value=''; setPreview(''); });
+
+/* ===== UI 구성 ===== */
+function buildCats(){
+  document.getElementById('cats').innerHTML=CATS.map(function(c,i){
+    return '<button type="button" class="cat'+(i===0?' on':'')+'" data-cat="'+c.k+'" style="'+(i===0?'background:'+c.color+';border-color:'+c.color+';color:#1b1b1b;':'')+'">'+c.label+'</button>';
+  }).join('');
+  var f='<button class="fl on" data-f="all">전체</button>'+CATS.map(function(c){return '<button class="fl" data-f="'+c.k+'">'+c.label+'</button>';}).join('')+'<span class="count"></span>';
+  document.getElementById('filters').innerHTML=f;
+}
+function setCat(k){ selCat=k; document.querySelectorAll('.cat').forEach(function(b){ var on=b.dataset.cat===k; b.classList.toggle('on',on); var c=catOf(b.dataset.cat); b.style.cssText=on?'background:'+c.color+';border-color:'+c.color+';color:#1b1b1b;':''; }); }
+
+document.addEventListener('click',function(e){
+  var t=e.target;
+  if(t.dataset.cat){ setCat(t.dataset.cat); }
+  else if(t.dataset.f){ filter=t.dataset.f; document.querySelectorAll('.fl').forEach(function(b){b.classList.toggle('on',b.dataset.f===filter);}); render(); }
+  else if(t.dataset.like){ if(likePost(t.dataset.like)) render(); }
+  else if(t.dataset.del){ if(confirm('이 글을 삭제할까요?')) delPost(t.dataset.del); }
+  else if(t.dataset.edit){ startEdit(t.dataset.edit); }
+});
+
+/* ===== 글쓰기 / 수정 ===== */
+function resetForm(){
+  editingId=null; uploadData='';
+  document.getElementById('content').value=''; document.getElementById('img').value='';
+  document.getElementById('link').value=''; document.getElementById('linktext').value='';
+  setPreview('');
+  document.getElementById('send').textContent='📌 보드에 올리기';
+  document.getElementById('cancel').style.display='none';
+  document.getElementById('editLabel').style.display='none';
+}
+function startEdit(id){
+  getPost(id,function(p){
+    if(!p) return;
+    editingId=id; setCat(p.cat);
+    document.getElementById('nick').value=p.nick||'';
+    document.getElementById('content').value=p.text||'';
+    document.getElementById('link').value=p.link||''; document.getElementById('linktext').value=p.linktext||'';
+    if(p.img){ if(p.img.indexOf('data:')===0){ uploadData=p.img; document.getElementById('img').value=''; } else { uploadData=''; document.getElementById('img').value=p.img; } setPreview(p.img); }
+    else { uploadData=''; document.getElementById('img').value=''; setPreview(''); }
+    document.getElementById('send').textContent='✏️ 수정 저장';
+    document.getElementById('cancel').style.display='';
+    document.getElementById('editLabel').style.display='';
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+}
+document.getElementById('cancel').addEventListener('click',resetForm);
+document.getElementById('send').addEventListener('click',function(){
+  var text=document.getElementById('content').value.trim();
+  if(!text){ alert('내용을 적어 주세요.'); return; }
+  var img=uploadData||safeUrl(document.getElementById('img').value);
+  var data={cat:selCat,nick:document.getElementById('nick').value.trim(),text:text,img:img,link:safeUrl(document.getElementById('link').value),linktext:document.getElementById('linktext').value.trim()};
+  var btn=this; btn.disabled=true; btn.textContent=editingId?'저장 중…':'올리는 중…';
+  if(editingId){
+    data.id=editingId;
+    updatePost(data,function(){ btn.disabled=false; resetForm(); render(); });
+  } else {
+    data.id=uid(); data.likes=0; data.ts=Date.now();
+    addPost(data,function(){ btn.disabled=false; resetForm(); render(); });
+  }
+});
+
+document.getElementById('saveUrl').addEventListener('click',function(){
+  localStorage.setItem(LS_URL,document.getElementById('apiUrl').value.trim()); location.reload();
+});
+
+/* Apps Script 코드 (붙여넣기용) */
+var GAS=[
+'// 구글 시트 = 보드 저장소. 시트1 첫 줄(헤더): id | cat | nick | text | img | link | linktext | likes | ts | ok',
+'const APPROVE_FIRST = false;  // true면 ok열이 TRUE인 글만 보임(교사 검토 후 공개)',
+'',
+'function sheet_(){ return SpreadsheetApp.getActiveSpreadsheet().getSheets()[0]; }',
+'function rowOf_(sh,id){ const v=sh.getDataRange().getValues(); for(let i=1;i<v.length;i++) if(v[i][0]==id) return i+1; return 0; }',
+'',
+'function doGet(){',
+'  const rows = sheet_().getDataRange().getValues();',
+'  const head = rows.shift() || [];',
+'  const posts = rows.map(r => { const o={}; head.forEach((h,i)=> o[h]=r[i]); return o; })',
+'    .filter(p => p.id && (!APPROVE_FIRST || String(p.ok).toUpperCase()==="TRUE"))',
+'    .map(p => ({id:p.id,cat:p.cat,nick:p.nick,text:p.text,img:p.img,link:p.link,linktext:p.linktext,likes:Number(p.likes)||0,ts:Number(p.ts)}));',
+'  return ContentService.createTextOutput(JSON.stringify({posts})).setMimeType(ContentService.MimeType.JSON);',
+'}',
+'',
+'function doPost(e){',
+'  const p=e.parameter, sh=sheet_();',
+'  if(p.like){            // 좋아요 +1',
+'    const r=rowOf_(sh,p.like); if(r){ sh.getRange(r,8).setValue((Number(sh.getRange(r,8).getValue())||0)+1); }',
+'  } else if(p.del){      // 삭제',
+'    const r=rowOf_(sh,p.del); if(r) sh.deleteRow(r);',
+'  } else if(p.edit){     // 수정',
+'    const r=rowOf_(sh,p.edit); if(r) sh.getRange(r,2,1,6).setValues([[p.cat||"",p.nick||"",p.text||"",p.img||"",p.link||"",p.linktext||""]]);',
+'  } else {               // 새 글',
+'    sh.appendRow([Utilities.getUuid(),p.cat||"",p.nick||"",p.text||"",p.img||"",p.link||"",p.linktext||"",0,Date.now(),APPROVE_FIRST?"FALSE":"TRUE"]);',
+'  }',
+'  return ContentService.createTextOutput("ok");',
+'}'
+].join('\n');
+document.getElementById('gasCode').textContent=GAS;
+
+/* 초기화 */
+if(API_URL){ var b=document.getElementById('modeBadge'); b.textContent='● 실시간 연결됨 · 모두가 함께 보는 보드'; b.className='mode live'; document.getElementById('apiUrl').value=API_URL; }
+buildCats();
+render();
+</script>
+</body>
+</html>
