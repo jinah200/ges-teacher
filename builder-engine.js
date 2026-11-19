@@ -52,7 +52,7 @@
     c.groups.forEach(function(g){
       if(g.calc) return;
       num++;
-      var html='<div class="bg" data-k="'+g.key+'"><h4><span class="gn">'+num+'</span><span class="gt">'+esc(g.label)+'</span>'+(g.text?'<small>직접 입력</small>':'<small>'+((g.max||1)>1?('여러 개 · 최대 '+g.max+'개'):'하나 고르기')+'</small>')+'</h4>';
+      var html='<div class="bg'+(g.mine?' mine':'')+'" data-k="'+g.key+'"><h4><span class="gn">'+num+'</span><span class="gt">'+esc(g.label)+'</span>'+(g.text?'<small>직접 입력</small>':'<small>'+((g.max||1)>1?('여러 개 · 최대 '+g.max+'개'):'하나 고르기')+'</small>')+'</h4>';
       if(g.text){
         html+='<input class="btext" type="text" data-k="'+g.key+'" placeholder="'+esc(g.ph||'')+'" value="'+esc(self.state[g.key].t)+'">';
       }else{
@@ -73,6 +73,7 @@
       '<div class="br"><div class="bhint">'+esc(this.cfg.hint||'💡 왼쪽에서 고르면 오른쪽 프롬프트에 바로 반영돼요.')+'</div>'+
       '<div class="bbar"><div class="bnote">핑크색 글자가 내가 고른 부분이에요.<br>누르면 왼쪽 선택 창으로 이동합니다.</div><div class="bbtns"><button type="button" class="bedit">✏️ 직접 고치기</button><button type="button" class="bcopy">📋 프롬프트 복사</button></div></div>'+
       '<div class="beditnote">✏️ 오른쪽 프롬프트를 눌러 글자를 직접 고칠 수 있어요. 고친 내용 그대로 복사됩니다. (왼쪽 선택을 바꾸면 선택한 내용으로 다시 만들어집니다)</div>'+
+      '<div class="minewarn" id="mw"></div>'+
       '<pre class="bout'+(this.cfg.code?' code':'')+'"></pre></div>';
     this.bind(); this.renderOut(null);
   };
@@ -96,7 +97,7 @@
         var pre=line.slice(last,m.index); html+=esc(pre); plain+=pre;
         var k=m[1], g=gm[k], v=vals[k];
         if(!g){ html+=esc(m[0]); plain+=m[0]; last=m.index+m[0].length; continue; }
-        if(g && g.text && !v){ var phv=self.cfg.code ? (g.ph||k) : '['+(g.ph||k)+']'; html+='<span class="tok ph" data-k="'+k+'">'+esc(phv)+'</span>'; plain+=phv; }
+        if(g && g.text && !v){ var phv=self.cfg.code ? (g.ph||k) : '['+(g.ph||k)+']'; html+='<span class="tok ph'+(g.mine?' mine':'')+'" data-k="'+k+'">'+esc(phv)+'</span>'; plain+=phv; }
         else{ html+='<span class="tok" data-k="'+k+'">'+esc(v)+'</span>'; plain+=v; }
         last=m.index+m[0].length;
       }
@@ -172,6 +173,16 @@
     });
     root.querySelector('.bcopy').addEventListener('click',function(){
       var btn=this, t=self.dirty ? self.root.querySelector('.bout').innerText.replace(/\u00a0/g,' ') : self.plain;
+      var mw=self.root.querySelector('.minewarn');
+      var miss=self.conf().groups.filter(function(g){ return g.mine && !self.val(g); });
+      if(mw){
+        if(miss.length){
+          mw.textContent='이 프롬프트에는 아직 선생님의 문장이 없습니다. 아래 \u2018'+(miss[0].label||'내 문장')+'\u2019에 한 줄만 적어 보세요 — 그 한 줄이 이것을 선생님의 수업으로 만듭니다.';
+          mw.classList.add('on');
+          var grp=self.root.querySelector('.bg.mine');
+          if(grp){ grp.classList.remove('pulse'); void grp.offsetWidth; grp.classList.add('pulse'); }
+        } else { mw.classList.remove('on'); mw.textContent=''; }
+      }
       function ok(){ var o=btn.textContent; btn.textContent='✅ 복사됨'; setTimeout(function(){ btn.textContent='📋 프롬프트 복사'; },1500); }
       function fb(){ var ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select();
         try{ document.execCommand('copy'); ok(); }catch(e){ btn.textContent='⚠️ 실패'; } document.body.removeChild(ta); }
@@ -183,8 +194,12 @@
     if(document.querySelector('.builder[data-b]')) document.body.classList.add('hasb');
     document.querySelectorAll('.builder[data-b]').forEach(function(el){
       var cfg=REG[el.getAttribute('data-b')]; if(!cfg) return;
+      if(cfg.levels) document.body.classList.add('lv-aware');
       INST.push(new Builder(el,cfg));
     });
+    try{ var lv=localStorage.getItem('ges_level')||'elem';
+      (window.__lvCbs||[]).forEach(function(f){ try{ f(lv); }catch(e){} });
+    }catch(e){}
   }
   (window.__lvCbs=window.__lvCbs||[]).push(function(lv){
     INST.forEach(function(b){ if(b.level!==lv){ b.level=lv; b.draw(); } });

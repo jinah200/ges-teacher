@@ -23,6 +23,24 @@
     if(d.type==='set-level'){ localStorage.setItem(LS_LEVEL,d.level); applyLevel(d.level); }
     if(d.type==='ping-level'){ try{ev.source.postMessage({type:'child-level',level:getLevel()},'*');}catch(e){} }
   });
+
+  // ---- 학교급 안내 배너 ----
+  var LVNAME={elem:'초등',mid:'중등',high:'고등'};
+  function levelNotice(lv){
+    var wrap=document.querySelector('.wrap'); if(!wrap) return;
+    var hasLane=document.querySelector('[data-level]')||document.body.classList.contains('lv-aware');
+    if(!hasLane) return;
+    var el=document.getElementById('lvNotice');
+    if(!el){
+      el=document.createElement('div'); el.id='lvNotice'; el.className='lv-notice';
+      var h1=wrap.querySelector('h1');
+      if(h1&&h1.nextSibling) h1.parentNode.insertBefore(el,h1.nextSibling); else wrap.insertBefore(el,wrap.firstChild);
+    }
+    el.innerHTML='<b>학교급: '+(LVNAME[lv]||'초등')+'</b> <span>상단의 <b>초등·중등·고등</b>을 바꾸면 이 페이지의 <b>예시와 프롬프트 선택지</b>가 해당 학교급에 맞게 바뀝니다. 내용의 뼈대는 같고, 사례만 달라집니다.</span>';
+  }
+  (window.__lvCbs=window.__lvCbs||[]).push(levelNotice);
+  document.addEventListener('DOMContentLoaded',function(){ levelNotice(getLevel()); });
+
   applyLevel(getLevel());
 
   // ---- 복사 버튼 ----
