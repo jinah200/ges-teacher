@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@500;600;700;900&display=swap');
 /* 교사 연수 웹교안 — 공유 스타일 (Google for Education 톤) */
 :root{
-  --blue:#1a73e8; --blue-d:#1967d2; --blue-l:#e8f0fe;
-  --green:#1e8e3e; --green-l:#e6f4ea;
-  --yellow:#f9ab00; --yellow-l:#fef7e0;
-  --red:#d93025; --purple:#9334e6;
-  --navy:#202124; --gray:#5f6368; --line:#dadce0; --line-l:#e8eaed;
-  --bg:#ffffff; --bg-soft:#f8f9fa; --card:#ffffff;
-  --radius:16px; --shadow:0 1px 3px rgba(60,64,67,.12),0 1px 2px rgba(60,64,67,.08);
-  --shadow-h:0 2px 8px rgba(60,64,67,.18);
+  /* 성찰·인문 팔레트 — 종이와 잉크 */
+  --blue:#3a5a6b; --blue-d:#294451; --blue-l:#e8eef1;   /* 먹빛 남색(주 강조) */
+  --green:#5f7a5a; --green-l:#eaf0e6;                    /* 세이지 */
+  --yellow:#bb8a33; --yellow-l:#f6efda;                  /* 황토 */
+  --red:#b0533b; --purple:#7c5d80;                        /* 테라코타 / 플럼 */
+  --navy:#2c2823; --gray:#6d6559; --line:#e4ddd0; --line-l:#efe9dc;
+  --bg:#faf7f1; --bg-soft:#f3eee3; --card:#fffdf8;        /* 따뜻한 종이 */
+  --radius:16px; --shadow:0 1px 3px rgba(60,50,40,.10),0 1px 2px rgba(60,50,40,.06);
+  --shadow-h:0 4px 16px rgba(60,50,40,.14);
   --font:"Pretendard Variable","Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --serif:"Noto Serif KR","Nanum Myeongjo",serif;
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -16,8 +19,8 @@ body{margin:0;font-family:var(--font);color:var(--navy);background:var(--bg);
   line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;}
 .wrap{max-width:860px;margin:0 auto;padding:36px 22px 90px;}
 h1,h2,h3{line-height:1.3;color:var(--navy);}
-h1{font-size:2rem;font-weight:800;margin:.2em 0 .3em;}
-h2{font-size:1.4rem;font-weight:700;margin:1.8em 0 .5em;}
+h1{font-family:var(--serif);font-size:2rem;font-weight:700;letter-spacing:-.01em;margin:.2em 0 .35em;line-height:1.35;}
+h2{font-family:var(--serif);font-size:1.4rem;font-weight:700;margin:1.8em 0 .5em;line-height:1.4;}
 h3{font-size:1.1rem;font-weight:700;margin:1.4em 0 .4em;}
 p{margin:.5em 0;}
 a{color:var(--blue-d);}
@@ -127,7 +130,7 @@ th{background:var(--bg-soft);font-weight:700;}
 .ges-banner .btn.ghost:hover{background:rgba(255,255,255,.24);}
 @media(max-width:560px){.ges-banner .ges-links{width:100%;}}
 
-.hero{background:linear-gradient(135deg,#e8f0fe,#f3e8fd);border-radius:20px;padding:34px 28px;margin-bottom:20px;}
+.hero{background:linear-gradient(160deg,#f3f0e6,#efeee4 55%,#eceae0);border:1px solid var(--line);border-radius:22px;padding:30px 30px 26px;margin:6px 0 4px;}
 .hero h1{margin:.1em 0;}
 .foot{margin-top:40px;color:var(--gray);font-size:.85rem;text-align:center;}
 
@@ -209,7 +212,7 @@ body.hasb .wrap{max-width:1080px;}
 /* 워크숍 히어로 */
 .hero-kicker{margin-top:14px;font-weight:700;color:var(--blue-d);font-size:1.05rem;}
 .hero .hero-title{font-size:2.5rem;line-height:1.2;margin:.15em 0 .3em;letter-spacing:-.02em;}
-.hero .bugw{color:#d93025;background:#fce8e6;border-radius:10px;padding:0 .18em;}
+.hero .bugw{color:var(--blue-d);background:var(--blue-l);border-radius:8px;padding:0 .18em;}
 .hero-sub{font-size:1.12rem;line-height:1.65;color:var(--navy);margin:0 0 14px;}
 .bugflow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:6px;}
 .bugflow .bf{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line-l);border-radius:12px;padding:9px 14px;font-size:.84rem;color:var(--gray);line-height:1.4;}
@@ -282,3 +285,23 @@ body.hasb .wrap{max-width:1080px;}
 .sc-card span{font-size:.9rem;color:var(--gray);line-height:1.5;}
 .sc-card .sc-go{margin-top:auto;color:var(--blue-d);font-weight:700;font-size:.9rem;}
 .sc-note{margin:6px 0 0;font-size:.86rem;color:var(--gray);}
+
+/* ───── 성찰·인문 컴포넌트 ───── */
+.serif{font-family:var(--serif);}
+/* 반추 스레드 — 잠깐 되돌아보기 */
+.reflect{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:4px 14px 14px 4px;padding:16px 20px;margin:20px 0;}
+.reflect .rk{font-family:var(--serif);font-weight:700;color:var(--blue-d);font-size:1.02rem;}
+.reflect p{margin:.4em 0 0;color:var(--navy);line-height:1.7;}
+.reflect .q{margin:.5em 0 0;padding-left:14px;border-left:2px solid var(--line);color:var(--gray);font-style:italic;}
+/* 거장의 한마디 */
+.maxim{position:relative;background:linear-gradient(180deg,#fffdf8,#f7f2e8);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin:18px 0;}
+.maxim .quote{font-family:var(--serif);font-size:1.15rem;line-height:1.6;color:var(--navy);}
+.maxim .who{margin-top:.6em;font-weight:700;color:var(--blue-d);font-size:.92rem;}
+.maxim .who::before{content:"— ";}
+.maxim .big{position:absolute;top:2px;left:12px;font-family:var(--serif);font-size:3rem;color:var(--line);line-height:1;}
+/* 성찰 입력(저널) */
+.journal{background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:16px 18px;margin:16px 0;}
+.journal label{display:block;font-weight:700;margin:10px 0 5px;color:var(--navy);}
+.journal textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--font);font-size:.98rem;min-height:56px;background:#fffefb;resize:vertical;}
+.journal .save{margin-top:10px;background:var(--blue);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-weight:700;cursor:pointer;font-family:inherit;}
+.journal .hint{font-size:.82rem;color:var(--gray);}

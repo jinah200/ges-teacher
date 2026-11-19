@@ -3,67 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>심화(선택) · 업무 자동화</title>
-<link rel="stylesheet" href="style.css?v=20261113a">
+<title>수업 6 · 효과적 피드백</title>
+<link rel="stylesheet" href="style.css?v=20261119a">
 </head>
 <body>
 <div class="wrap">
-  <div class="mod-head">
-    <span class="pill gray">심화 · 선택</span>
-    <span class="pill gray">약 20분</span>
-  </div>
-  <h1>[심화] 업무 자동화 로봇 만들기</h1>
-  <div class="note"><b>선택 모듈입니다.</b> 코드 붙여넣기와 트리거 설정이 필요해 처음에는 어려울 수 있어요. 모듈 1~5를 마치고 시간이 남거나, 자동화에 관심 있는 분만 따라오세요. 건너뛰어도 연수 흐름에는 지장이 없습니다.</div>
-  <p class="lead">폼에 제출이 들어오면 — 아무도 건드리지 않아도 — 맞춤 결과물이 만들어져 메일로 발송됩니다. Apps Script <b>트리거</b>로 사람 없이 돌아가는 자동화를 만듭니다.</p>
-  <div class="map">
-    <b>역량</b> — 교사 업무 효율·전문성 (반복을 시스템으로)
-  </div>
+<div class="mod-head"><span class="pill">수업 6 · 피드백</span><span class="pill gray">약 25분</span></div>
+  <h1>💬 6 · 효과적 피드백</h1>
+  <p class="lead">피드백은 점수를 매기는 일이 아니라, 다음 걸음을 가리키는 일입니다. 바쁜 하루에 모든 학생에게 정성스러운 코멘트를 쓰기는 어렵습니다. AI는 피드백의 <b>초안</b>을 만들어 주고, 교사는 그 위에 아는 아이의 맥락을 얹습니다.</p>
+  <div class="map"><b>역량</b> — 피드백·형성평가 · 성장 중심 평가</div>
 
-  <h2>무엇을 자동화하나요?</h2>
-  <div class="card">
-    <p data-level="elem"><span class="lane-tag elem">초등</span> 활동 소감을 받으면 <b>추억 엽서</b>(이름·소감·사진)를 자동으로 만들어 가정으로 발송.</p>
-    <p data-level="mid"><span class="lane-tag mid">중등</span> 과제 제출을 받으면 <b>개별 확인·피드백 안내 메일</b>을 자동 발송.</p>
-    <p data-level="high"><span class="lane-tag high">고등</span> 응모·제출을 받으면 <b>고유 번호 부여 + 확인증(PDF)</b>을 자동 발송.</p>
+  <div class="maxim"><span class="big">“</span>
+    <div class="quote">피드백은 학습자가 지금 어디에 있고, 어디로 가야 하며, 어떻게 그 간격을 좁힐지 알려줄 때 비로소 힘을 가진다.</div>
+    <div class="who">존 해티 &amp; 헬렌 팀펄리, 피드백 연구</div>
   </div>
 
-  <div class="note">모듈 5에서 만난 Apps Script, 기억나죠? 그땐 데이터를 '읽어 내보내는(API)' 용도였고, 이번엔 폼 제출에 반응해 일하는 <b>트리거</b> 용도예요 — 같은 도구, 다른 초능력.</div>
+  <h2>피드백 초안 만들기</h2>
+  <p class="lead">학생 글을 붙여넣고(이름은 지우고), 원칙과 형식을 고르면 성장 중심 피드백 초안이 완성됩니다. 마지막 손질은 아이를 아는 선생님의 몫입니다.</p>
+  <div class="builder" data-b="feedback"></div>
 
-  <h2>자동화 흐름</h2>
-  <div class="card">
-    <div class="step"><div class="n">1</div><div class="b"><h3>구글 폼</h3><p>이름·소감·사진·이메일 제출</p></div></div>
-    <div class="step"><div class="n">2</div><div class="b"><h3>트리거 발동</h3><p>onFormSubmit 실행 → Apps Script 시작, 행 번호로 고유번호 부여</p></div></div>
-    <div class="step"><div class="n">3</div><div class="b"><h3>슬라이드 복사·치환</h3><p>템플릿의 {{이름}}·{{소감}}·{{응모번호}} 치환, '사진자리' 도형을 업로드 사진으로 교체</p></div></div>
-    <div class="step"><div class="n">4</div><div class="b"><h3>PDF 변환·메일 발송</h3><p>완성본을 PDF로 바꿔 신청자 이메일로 자동 발송</p></div></div>
-  </div>
+  <div class="note"><b>개인정보 유의</b> 학생 이름·사진·식별 정보는 넣지 마세요. 꼭 필요하면 '학생 A'처럼 바꿔 쓰고, AI가 만든 피드백은 반드시 교사가 읽고 다듬은 뒤 전달합니다.</div>
+  <div class="tip"><b>💡 TIP</b> "이 피드백이 학생의 <b>노력</b>이 아니라 <b>타고난 능력</b>을 칭찬하고 있지는 않은지 점검해 줘"라고 되물으면, 성장 마인드셋을 해치지 않는 표현으로 다듬어 줍니다.</div>
 
-  <div class="ctx"><b>🧭 맥락 TIP</b> 자동화 프롬프트에는 <b>폼 질문 제목, 슬라이드 표식, 시트 열 이름</b>처럼 "내 파일의 실제 이름"을 그대로 알려 주세요. AI는 내 파일을 볼 수 없어서, 이름이 하나라도 다르면 코드가 동작하지 않습니다.</div>
+  <div class="wow"><h2>🧩 나눔 보드에 올리기</h2><p>잘 다듬어진 피드백 예시를 나눔 보드에 올려, 우리만의 피드백 문장 모음을 함께 만들어 보세요.</p><a class="btn" href="board.html" target="_blank" rel="noopener">🔗 나눔 보드 열기</a></div>
 
-  <h2>실습 ① · AI로 코드 받기</h2>
-  <p class="lead">왼쪽에서 자동으로 할 일과 내 파일의 실제 이름을 정하면, 오른쪽 프롬프트로 Gemini가 거의 완성된 Apps Script 코드를 만들어 줍니다.</p>
-  <div class="builder" data-b="auto"></div>
-
-  <h2>실습 ② · 완성 코드 (바로 사용)</h2>
-  <p class="lead">시간이 부족하면 AI 없이 이 칸으로 바로 완성하세요. 왼쪽에 <b>템플릿 ID·폴더 ID·내 폼 질문 제목</b>을 입력하면 코드가 완성됩니다. 복사해 Apps Script에 붙여넣고 <b>트리거(onFormSubmit · 양식 제출 시)</b>를 설정하세요.</p>
-  <div class="builder" data-b="autocode"></div>
-  <div class="tip"><b>핵심</b> ① 폼 질문 이름(이메일·이름·소감·사진) ② 슬라이드 표식({{이름}}·{{소감}}·{{응모번호}}·대체 텍스트 '사진자리') ③ 트리거 설정(onFormSubmit) — 이 세 가지만 맞으면 작동합니다.</div>
-  <div class="note"><b>보안 권한</b> 첫 실행 때 구글 권한 승인이 뜹니다. 본인 계정으로 승인해야 메일 발송·드라이브 접근이 됩니다.</div>
-
-  <div class="tip"><b>💡 TIP</b> <b>사본으로 먼저</b> — 원본 폼·슬라이드를 복사해 두고, 사본에서 시험하세요.</div>
-  <div class="tip"><b>💡 TIP</b> <b>내 메일로 먼저</b> — 처음 테스트 제출은 내 메일 주소로 해서 발송 내용을 확인하세요.</div>
-  <div class="tip"><b>💡 TIP</b> <b>오류는 그대로 붙여넣기</b> — 빨간 오류 메시지를 복사해 AI에게 "이 오류를 고쳐 줘"라고 하면 대부분 해결됩니다.</div>
-  <div class="tip"><b>💡 TIP</b> <b>개인정보</b> — 학생·학부모에게 메일을 보내는 자동화는 학교의 개인정보·정보보안 지침을 먼저 확인하세요.</div>
-
-  <div class="wow">
-    <h2>📤 내 결과물을 나눔 보드에 올리기</h2>
-    <p>이번 모듈에서 만든 <b>자동화 프롬프트와 Apps Script 코드</b>를 나눔 보드에 올려 함께 나눠 보세요.</p>
-    <a class="btn" href="board.html" target="_blank" rel="noopener">🧩 나눔 보드 열기</a>
-  </div>
-    <div class="flow-nav"><span>STEP 4 내 교실</span> → <span>마무리</span> → <b>심화 자동화(선택)</b></div>
-  <div class="foot">GES 교실 BUG 해결 워크숍 · 심화(선택)</div>
+  <div class="reflect"><span class="rk">닫는 성찰 · 처음의 물음으로</span><p>오늘 아침 <b>여는 성찰</b>에 적은 세 가지를 다시 펼쳐 보세요. 무엇을 맡기고, 무엇을 지키고 싶었나요. 그 생각은 지금 어떻게 달라졌나요?</p><p class="q">나는 AI를 '교사를 대신하는 것'이 아니라 '교사가 더 교사답게 하는 것'으로 쓸 수 있는가?</p></div>
+  <div class="foot">생각하는 교사의 AI 수업 · 6 · 효과적 피드백</div>
 </div>
-<script src="app.js?v=20261113a"></script>
-<script src="builder-engine.js?v=20261113a"></script>
-<script src="builders.js?v=20261113a"></script>
-<script src="builders-code.js?v=20261113a"></script>
+<script src="app.js?v=20261119a"></script>
+<script src="builder-engine.js?v=20261119a"></script>
+<script src="builders.js?v=20261119a"></script>
+<script src="builders-v2.js?v=20261119a"></script>
 </body>
 </html>

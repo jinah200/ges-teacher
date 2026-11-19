@@ -3,53 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🐞 GES 교실 BUG 해결 워크숍 · Gemini & Gemini Notebook</title>
+<title>생각하는 교사의 AI 수업 · GES Gemini 워크숍</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@500;600;700;900&display=swap">
 <style>
-  :root{--blue:#1a73e8;--blue-d:#1967d2;--blue-l:#e8f0fe;--navy:#202124;--gray:#5f6368;--line:#dadce0;}
+  :root{--blue:#3a5a6b;--blue-d:#294451;--blue-l:#e8eef1;--navy:#2c2823;--gray:#6d6559;--line:#e4ddd0;--bg:#faf7f1;--serif:"Noto Serif KR","Nanum Myeongjo",serif;}
   *{box-sizing:border-box;}
   html,body{height:100%;}
   body{margin:0;display:flex;flex-direction:column;height:100vh;overflow:hidden;
-    font-family:"Pretendard Variable","Pretendard","Noto Sans KR",-apple-system,system-ui,sans-serif;color:var(--navy);background:#fff;}
-  .topbar{flex:none;display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:9px 18px;
-    background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #e8eaed;}
-  .brand{font-weight:800;font-size:1.05rem;display:flex;align-items:center;gap:8px;white-space:nowrap;}
-  .brand .bug{font-size:1.15rem;line-height:1;}
-  .brand .bt b{color:#d93025;}
-  .brand .bsub{font-size:.74rem;font-weight:600;color:var(--gray);background:#f1f3f4;border-radius:999px;padding:2px 8px;}
+    font-family:"Pretendard Variable","Pretendard","Noto Sans KR",-apple-system,system-ui,sans-serif;color:var(--navy);background:var(--bg);}
+  .topbar{flex:none;display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:10px 18px;
+    background:rgba(250,247,241,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .brand{display:flex;flex-direction:column;line-height:1.2;white-space:nowrap;}
+  .brand .bt{font-family:var(--serif);font-weight:700;font-size:1.08rem;color:var(--navy);}
+  .brand .bsub{font-size:.72rem;font-weight:600;color:var(--gray);letter-spacing:.02em;}
   @media(max-width:900px){.brand .bsub{display:none;}}
-  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgba(26,115,232,.18);}
   /* 학교급 토글 */
-  .levels{display:flex;gap:3px;background:#f1f3f4;border-radius:999px;padding:3px;}
+  .levels{display:flex;gap:3px;background:#efe8db;border-radius:999px;padding:3px;}
   .levels button{border:0;background:transparent;font-family:inherit;font-weight:700;font-size:.85rem;
     padding:6px 14px;border-radius:999px;cursor:pointer;color:var(--gray);transition:.14s;}
-  .levels button.on{background:#fff;color:var(--blue-d);box-shadow:0 1px 3px rgba(60,64,67,.2);}
+  .levels button.on{background:var(--bg);color:var(--blue-d);box-shadow:0 1px 3px rgba(60,50,40,.18);}
   .tabs{display:flex;gap:6px;flex-wrap:wrap;}
-  .tab{border:1px solid transparent;background:#fff;color:#3c4043;font-family:inherit;font-weight:600;
+  .tab{border:1px solid transparent;background:#fffdf8;color:#4a4238;font-family:inherit;font-weight:600;
     font-size:.82rem;padding:7px 12px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.14s;}
   .tab .s{display:block;font-size:.68rem;font-weight:600;color:var(--gray);}
   .tab:hover{border-color:var(--blue);color:var(--blue-d);}
-  .tab.active{background:#e8f0fe;color:var(--blue-d);}
+  .tab.active{background:var(--blue);color:#fff;}
+  .tab.active .s{color:#e8eef1;}
   .acts{margin-left:auto;display:flex;gap:8px;align-items:center;}
   .tabs{order:5;flex-basis:100%;justify-content:flex-start;padding-top:2px;}
-  .sv-top{background:#d93025;color:#fff;text-decoration:none;font-weight:800;font-size:.84rem;padding:7px 14px;border-radius:999px;white-space:nowrap;}
-  .sv-top:hover{background:#b3261e;}
-  .ges-top{background:#1a73e8;color:#fff;text-decoration:none;font-weight:700;
+  .sv-top{background:var(--red,#b0533b);color:#fff;text-decoration:none;font-weight:800;font-size:.84rem;padding:7px 14px;border-radius:999px;white-space:nowrap;}
+  .sv-top:hover{opacity:.9;}
+  .ges-top{background:var(--blue);color:#fff;text-decoration:none;font-weight:700;
     font-size:.82rem;padding:7px 14px;border-radius:999px;white-space:nowrap;transition:.14s;}
-  .ges-top:hover{background:#1967d2;}
-  .wow-top{background:#fff;color:#7b2cbf;border:1.5px solid #7b2cbf;text-decoration:none;font-weight:700;font-size:.84rem;padding:6px 12px;border-radius:999px;white-space:nowrap;}
-  .wow-top:hover{background:#f5ecfc;}
-  .prog{display:flex;align-items:center;gap:7px;font-size:.82rem;font-weight:700;color:var(--gray);white-space:nowrap;}
-  .prog .b{color:var(--blue-d);}
-  .stage{flex:1;position:relative;background:#fff;}
+  .ges-top:hover{background:var(--blue-d);}
+  .wow-top{background:#fffdf8;color:#7c5d80;border:1.5px solid #7c5d80;text-decoration:none;font-weight:700;font-size:.84rem;padding:6px 12px;border-radius:999px;white-space:nowrap;}
+  .wow-top:hover{background:#f3ecf4;}
+  .stage{flex:1;position:relative;background:var(--bg);}
   iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
-  @media(max-width:720px){.tab .s{display:none;}.prog{display:none;}.brand{font-size:.9rem;}}
+  @media(max-width:720px){.tab .s{display:none;}.brand{font-size:.9rem;}}
 </style>
 </head>
 <body>
 <header class="topbar">
-  <div class="brand"><span class="bug">🐞</span><span class="bt">GES 교실 <b>BUG</b> 해결 워크숍</span><span class="bsub">Gemini &amp; Gemini Notebook</span></div>
+  <div class="brand"><span class="bt">생각하는 교사의 AI 수업</span><span class="bsub">GES · Gemini &amp; Gemini Notebook</span></div>
   <div class="levels" id="levels" title="학교급 선택">
     <button data-lv="elem" class="on">초등</button>
     <button data-lv="mid">중등</button>
@@ -57,16 +54,15 @@
   </div>
   <nav class="tabs" id="tabs">
     <button class="tab active" data-src="home.html">🏠 홈</button>
-    <button class="tab" data-src="intro.html">인트로</button>
-    <button class="tab" data-src="prep.html">준비물</button>
-    <button class="tab" data-src="module1.html">워밍업<span class="s">내 마음 캐릭터</span></button>
-    <button class="tab" data-src="module0.html">프롬프트<span class="s">맥락·메타·리버스</span></button>
-    <button class="tab" data-src="module2.html">STEP 1<span class="s">BUG 찾기 설문</span></button>
-    <button class="tab" data-src="module5.html">STEP 2<span class="s">대시보드</span></button>
-    <button class="tab" data-src="module3.html">STEP 3<span class="s">Notebook 정리</span></button>
-    <button class="tab" data-src="module4.html">STEP 4<span class="s">내 교실 적용</span></button>
-    <button class="tab" data-src="module7.html">마무리<span class="s">해결사·나누기</span></button>
-    <button class="tab" data-src="module6.html">심화<span class="s">자동화·선택</span></button>
+    <button class="tab" data-src="intro.html">여는 성찰<span class="s">나는 무엇을 원하는가</span></button>
+    <button class="tab" data-src="maestro.html">거장의 사고법<span class="s">파인만·애들러</span></button>
+    <button class="tab" data-src="module1.html">마음 캐릭터<span class="s">지금 나의 마음</span></button>
+    <button class="tab" data-src="module2.html">1 · 교사의 역할<span class="s">AI와 교사</span></button>
+    <button class="tab" data-src="module3.html">2 · Notebook<span class="s">내 자료 AI 파트너</span></button>
+    <button class="tab" data-src="module5.html">3 · 바이브 코딩<span class="s">수업 앱 제작</span></button>
+    <button class="tab" data-src="module4.html">4 · 수준별 자료<span class="s">학습 격차 해소</span></button>
+    <button class="tab" data-src="module0.html">5 · 탐구 설계<span class="s">탐구 수업 프레임</span></button>
+    <button class="tab" data-src="module6.html">6 · 피드백<span class="s">효과적 피드백</span></button>
   </nav>
   <div class="acts">
   <a class="sv-top" href="https://forms.gle/c3F2HAdHbyHX28X28" target="_blank" rel="noopener" title="연수생 사후설문 (강사: 정진아)">📝 사후설문</a>
@@ -74,11 +70,11 @@
   <a class="wow-top" href="board.html" target="_blank" rel="noopener" title="나눔 보드에 결과물 올리기">🧩 나눔 보드</a>
   </div>
 </header>
-<div class="stage"><iframe id="frame" src="home.html?v=20261113a" title="연수 교안"></iframe></div>
+<div class="stage"><iframe id="frame" src="home.html?v=20261119a" title="연수 교안"></iframe></div>
 
 <script>
 (function(){
-  var frame=document.getElementById('frame'); var VER='20261113a'; function U(s){ return s+'?v='+VER; }
+  var frame=document.getElementById('frame'); var VER='20261119a'; function U(s){ return s+'?v='+VER; }
   var tabs=[].slice.call(document.querySelectorAll('.tab'));
   var levelBtns=[].slice.call(document.querySelectorAll('#levels button'));
 
