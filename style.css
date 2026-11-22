@@ -404,3 +404,17 @@ h1+.lead{margin-top:.2em;}
 .wow .btn:hover{background:#4e6a4a;}
 .wow-top{color:var(--green);border-color:var(--green);}
 .wow-top:hover{background:#eaf0e6;}
+
+/* 여는 성찰 불러오기(recall) */
+.recall{background:#f2efe4;border:1px solid var(--line);border-left:3px solid var(--green);border-radius:4px 14px 14px 4px;padding:15px 20px;margin:16px 0 20px;}
+.recall .rc-k{font-family:var(--serif);font-weight:700;color:#3f5a3b;font-size:1rem;margin-bottom:.4em;}
+.recall p{margin:.3em 0;font-size:.96rem;line-height:1.75;}
+.recall p span{display:inline-block;min-width:104px;font-size:.78rem;font-weight:700;color:var(--gray);background:#fffdf8;border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin-right:8px;text-align:center;}
+.recall .rc-empty{color:var(--gray);font-size:.93rem;}
+.recall .rc-btn{margin-top:10px;background:var(--green);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-weight:700;cursor:pointer;font-family:inherit;font-size:.9rem;}
+.recall .rc-btn:hover{background:#4e6a4a;}
+.recall .rc-msg{margin-left:10px;font-size:.86rem;color:var(--green);}
+/* 다음 단계 안내 */
+.nextstep{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:16px 20px;margin:24px 0 10px;}
+.nextstep .ns-t{font-size:.95rem;color:var(--gray);line-height:1.7;}
+.nextstep .ns-t b{color:var(--blue-d);}
