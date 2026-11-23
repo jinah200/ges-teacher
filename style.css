@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@500;600;700;900&display=swap');
 /* 교사 연수 웹교안 — 공유 스타일 (Google for Education 톤) */
 :root{
-  /* 성찰·인문 팔레트 — 종이와 잉크 */
-  --blue:#3a5a6b; --blue-d:#294451; --blue-l:#e8eef1;   /* 먹빛 남색(주 강조) */
-  --green:#5f7a5a; --green-l:#eaf0e6;                    /* 세이지 */
-  --yellow:#bb8a33; --yellow-l:#f6efda;                  /* 황토 */
-  --red:#b0533b; --purple:#7c5d80;                        /* 테라코타 / 플럼 */
-  --navy:#2c2823; --gray:#6d6559; --line:#e4ddd0; --line-l:#efe9dc;
-  --bg:#faf7f1; --bg-soft:#f3eee3; --card:#fffdf8;        /* 따뜻한 종이 */
-  --radius:16px; --shadow:0 1px 3px rgba(60,50,40,.10),0 1px 2px rgba(60,50,40,.06);
-  --shadow-h:0 4px 16px rgba(60,50,40,.14);
+  /* 크리스마스 · 따뜻하고 아기자기한 팔레트 */
+  --blue:#2f6b4a; --blue-d:#20503a; --blue-l:#e5efe7;   /* 전나무 초록(주 강조) */
+  --green:#3f7a52; --green-l:#e7f0e8;                    /* 솔잎 */
+  --yellow:#c99a2e; --yellow-l:#f7efd8;                  /* 황금 장식 */
+  --red:#b0303a; --purple:#8a5a66;                        /* 크랜베리 / 포인세티아 */
+  --navy:#2b2622; --gray:#6d645a; --line:#e7ddcf; --line-l:#f1eadd;
+  --bg:#fbf7ef; --bg-soft:#f4eee0; --card:#fffdf8;        /* 눈 쌓인 종이 */
+  --radius:16px; --shadow:0 1px 3px rgba(60,45,35,.10),0 1px 2px rgba(60,45,35,.06);
+  --shadow-h:0 4px 16px rgba(60,45,35,.14);
   --font:"Pretendard Variable","Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
   --serif:"Noto Serif KR","Nanum Myeongjo",serif;
 }
@@ -313,7 +313,7 @@ p{line-height:1.9;}
 .mod-head{margin-bottom:.6em;}
 h1+.lead{margin-top:.2em;}
 /* 머리글 장식 */
-.wrap > h2::before{content:"";display:inline-block;width:14px;height:1px;background:var(--blue);vertical-align:middle;margin-right:10px;}
+.wrap > h2::before{content:"❅";display:inline-block;color:var(--red);font-size:.9em;margin-right:9px;vertical-align:baseline;}
 
 /* 제사(에피그래프) */
 .epigraph{margin:26px 0 30px;padding:0 0 0 22px;border-left:2px solid var(--line);}
@@ -418,3 +418,46 @@ h1+.lead{margin-top:.2em;}
 .nextstep{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:16px 20px;margin:24px 0 10px;}
 .nextstep .ns-t{font-size:.95rem;color:var(--gray);line-height:1.7;}
 .nextstep .ns-t b{color:var(--blue-d);}
+
+/* 문답 예시 */
+.dlg{margin-top:.3em;}
+.dlg p{margin:.45em 0;padding:9px 14px;border-radius:14px;max-width:88%;line-height:1.65;font-size:.95rem;}
+.dlg .d-ai{background:var(--blue-l);color:#1f3a46;border-top-left-radius:4px;}
+.dlg .d-me{background:#f0ece0;color:#3b352d;margin-left:auto;border-top-right-radius:4px;}
+.dlg .d-note{background:transparent;color:var(--gray);font-size:.88rem;max-width:100%;padding:6px 2px;}
+
+/* ───── 크리스마스 장식 ───── */
+.ges-banner{background:linear-gradient(160deg,#20503a,#2f6b4a);}
+.ges-banner.end{background:linear-gradient(160deg,#8a3a44,#b0303a);}
+.ges-banner .btn{background:#fffdf8;color:#20503a;}
+.ges-banner .btn.ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.45);}
+.survey{background:linear-gradient(160deg,#b0303a,#8a2630);}
+.survey-btn{color:#b0303a;}
+.survey-mini{background:#f6e4e2;color:#b0303a;border-color:#e7bcbb;}
+.sc-tag,.tc-tag{background:var(--red) !important;}
+.sv-top{background:var(--red);}
+.wow .btn{background:var(--green);}
+.maxim,.mcard,.showcase,.toolcard,.thinker{background:var(--card);}
+.hero-title .bugw{color:var(--red);background:#f6e4e2;}
+/* 상단 리본(빨강-초록-금) */
+body::before{content:"";position:fixed;top:0;left:0;right:0;height:4px;z-index:50;
+  background:repeating-linear-gradient(90deg,#b0303a 0 22px,#2f6b4a 22px 44px,#c99a2e 44px 50px);}
+.topbar{border-top:0;}
+/* 포인트 이모지(제목 곁) */
+h1::after{content:" ✦";color:var(--yellow);font-size:.6em;vertical-align:super;}
+/* 눈송이 은은하게 */
+.wrap{position:relative;}
+/* 두 갈래(바이브코딩) */
+.twoway{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+@media(max-width:720px){.twoway{grid-template-columns:1fr;}}
+.way{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;}
+.way-badge{align-self:flex-start;font-size:.76rem;font-weight:800;letter-spacing:.03em;color:#fff;border-radius:999px;padding:3px 12px;}
+.way-badge.canvas{background:var(--green);}
+.way-badge.studio{background:var(--red);}
+.way-name{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:#231f1a;margin:.3em 0 .4em;}
+.way-desc{font-size:.95rem;line-height:1.7;color:#3b352d;margin:0 0 .8em;}
+.way-list{margin:0 0 1em;padding:0;list-style:none;}
+.way-list li{font-size:.9rem;line-height:1.65;color:var(--gray);padding:3px 0 3px 0;border-top:1px dashed var(--line);}
+.way-list li:first-child{border-top:0;}
+.way-list li b{color:var(--blue-d);margin-right:5px;}
+.way .tc-btn{margin-top:auto;align-self:flex-start;}
