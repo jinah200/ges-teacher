@@ -71,7 +71,7 @@
     this.root.innerHTML='<div class="bsteps"><span><b>1</b> 왼쪽에서 고르기</span><i>→</i><span><b>2</b> 필요하면 직접 고치기</span><i>→</i><span><b>3</b> 복사해서 붙여넣기</span></div>'+
       '<div class="bl"><div class="bltitle">① 선택하기</div>'+left+advBtn+'</div>'+
       '<div class="br"><div class="bhint">'+esc(this.cfg.hint||'💡 왼쪽에서 고르면 오른쪽 프롬프트에 바로 반영돼요.')+'</div>'+
-      '<div class="bbar"><div class="bnote">핑크색 글자가 내가 고른 부분이에요.<br>누르면 왼쪽 선택 창으로 이동합니다.</div><div class="bbtns"><button type="button" class="bedit">✏️ 직접 고치기</button><button type="button" class="bcopy">📋 프롬프트 복사</button></div></div>'+
+      '<div class="bbar"><div class="bnote">핑크색 글자가 내가 고른 부분이에요.<br>누르면 왼쪽 선택 창으로 이동합니다.</div><div class="bbtns"><button type="button" class="bedit">✏️ 직접 고치기</button><button type="button" class="bcopy">📋 복사</button><button type="button" class="bopen">💬 복사 후 Gemini 열기</button></div></div>'+
       '<div class="beditnote">✏️ 오른쪽 프롬프트를 눌러 글자를 직접 고칠 수 있어요. 고친 내용 그대로 복사됩니다. (왼쪽 선택을 바꾸면 선택한 내용으로 다시 만들어집니다)</div>'+
       '<div class="minewarn" id="mw"></div>'+
       '<pre class="bout'+(this.cfg.code?' code':'')+'"></pre></div>';
@@ -183,10 +183,19 @@
           if(grp){ grp.classList.remove('pulse'); void grp.offsetWidth; grp.classList.add('pulse'); }
         } else { mw.classList.remove('on'); mw.textContent=''; }
       }
-      function ok(){ var o=btn.textContent; btn.textContent='✅ 복사됨'; setTimeout(function(){ btn.textContent='📋 프롬프트 복사'; },1500); }
+      function ok(){ btn.textContent='✅ 복사됨'; setTimeout(function(){ btn.textContent='📋 복사'; },1500); }
       function fb(){ var ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select();
         try{ document.execCommand('copy'); ok(); }catch(e){ btn.textContent='⚠️ 실패'; } document.body.removeChild(ta); }
       if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok).catch(fb); } else fb();
+    });
+    root.querySelector('.bopen').addEventListener('click',function(){
+      var btn=this, t=self.dirty ? self.root.querySelector('.bout').innerText.replace(/ /g,' ') : self.plain;
+      // 팝업 차단을 피하려 창을 먼저 연 뒤 복사
+      var win=window.open('https://gemini.google.com/app','_blank','noopener');
+      function done(){ btn.textContent='✅ 복사됨 · 붙여넣기(Ctrl+V)'; setTimeout(function(){ btn.textContent='💬 복사 후 Gemini 열기'; },2600); }
+      function fb(){ var ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta); done(); }
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done).catch(fb); } else fb();
+      if(!win){ btn.textContent='⚠️ 팝업을 허용해 주세요'; setTimeout(function(){ btn.textContent='💬 복사 후 Gemini 열기'; },2600); }
     });
   };
 
