@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>홈 · 생각하는 교사의 AI 수업</title>
-<link rel="stylesheet" href="style.css?v=20261126b">
+<link rel="stylesheet" href="style.css?v=20261126c">
 </head>
 <body>
 <div class="wrap">
@@ -56,8 +56,15 @@
         <span>수업·학급 운영 자료를 모은 교실 허브. 매번 새로 만들던 안내를 재사용 가능한 페이지로.</span>
         <span class="sc-go">joo.is/오늘의교실 →</span>
       </a>
+      <a class="sc-card feature" href="https://jinah200.github.io/edu_archive/" target="_blank" rel="noopener">
+        <span class="sc-badge">✨ NEW · AI가 직접 아카이빙</span>
+        <div class="sc-ico">🗂️</div>
+        <b>오늘의 교실 · AI 아카이브</b>
+        <span>클로드 AI 에이전트가 <b>스스로 깃허브에 올려 정리</b>한 아카이브판. 흩어진 수업·학급 자료를 AI가 직접 모아 한 곳에 — 사람이 아니라 AI가 설계·정리까지.</span>
+        <span class="sc-go">쌤.닷컴/오늘의교실 →</span>
+      </a>
     </div>
-    <p class="sc-note">※ 모두 코딩 전문가가 아니어도 Gemini로 만든 사이트입니다. 오늘 이 워크숍에서 그 방법의 핵심을 함께 익힙니다.</p>
+    <p class="sc-note">※ 모두 코딩 전문가가 아니어도 만든 사이트입니다 — 앞의 두 곳은 Gemini로, 마지막 아카이브는 AI 에이전트가 직접 깃허브에 정리했습니다. 오늘 이 워크숍에서 그 방법의 핵심을 함께 익힙니다.</p>
   </section>
 
   <!-- GES 공식 접속 바로가기 (전면 배치) -->
@@ -117,7 +124,7 @@
   <div class="foot">생각하는 교사의 AI 수업 · 초·중·고 교사 연수 (GES 연계)</div>
 </div>
 
-<script src="app.js?v=20261126b"></script>
+<script src="app.js?v=20261126c"></script>
 <script>
   document.querySelectorAll('.mcard').forEach(function(c){
     c.addEventListener('click',function(){ try{ window.parent.postMessage({type:'goto',src:c.dataset.go},'*'); }catch(e){} });
